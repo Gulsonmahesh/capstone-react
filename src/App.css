@@ -5,3 +5,16 @@
     left: 5% !important;
   }
 }
+
+*:focus {
+  border: none !important;
+  outline: none;
+}
+nav ul a:hover {
+  font-size: larger;
+  color: aliceblue;
+  text-decoration: none !important;
+}
+nav ul a:focus {
+  font-size: larger;
+}
