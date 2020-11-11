@@ -7,7 +7,7 @@ export default function Navbar() {
         <div className = "container-fluid p-0">
             <nav>
                 <div className="nav-wrapper">
-                    <a href="/" className="brand-logo ml-5">Shoppify</a>
+                    <a href="/" className="brand-logo ml-5 d-none d-lg-block d-md-block">Shoppify</a>
                     <SignOut />
                     <SignIn />
                 </div>
