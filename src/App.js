@@ -9,11 +9,10 @@ import Login from './components/user/Login';
 import Dashboard from './components/dashboard/Dashboard';
 
 function App(props) {
-  console.log(props);
   return (
     <Fragment>
       <Router>
-        <Navbar />
+        <Navbar loginStatus= {props.user.loginStatus} />
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route path="/productdetails/:id" component={ProductDetails} />
@@ -26,7 +25,8 @@ function App(props) {
 }
 const mapStateToProps = (state, ownProps) => {
   return {
-    prop: state.product.products
+    prop: state.product.products,
+    user: state.auth.user
   }
 }
 

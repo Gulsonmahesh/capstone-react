@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
 import ProductList from '../product/ProductList';
+import React from 'react'
 
-export default class RightPane extends Component {
-    render() {
-        return (
-            <div>
-                <ProductList />
-            </div>
-        )
-    }
+export default function RightPane(props) {
+    console.log(props);
+    return (
+        <div>
+            <ProductList />
+        </div>
+    )
 }
+

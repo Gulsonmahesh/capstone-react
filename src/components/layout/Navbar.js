@@ -1,15 +1,17 @@
 import React from 'react'
 import SignIn from './SignIn';
 import SignOut from './Signout';
+import './Navbar.css';
 
-export default function Navbar() {
+export default function Navbar(props) {
     return (
         <div className = "container-fluid p-0">
             <nav>
                 <div className="nav-wrapper">
                     <a href="/" className="brand-logo ml-5 d-none d-lg-block d-md-block">Shoppify</a>
-                    <SignOut />
-                    <SignIn />
+                    {
+                        (props && props.loginStatus) ? <SignOut /> :  <SignIn />
+                    }
                 </div>
             </nav>
         </div>
