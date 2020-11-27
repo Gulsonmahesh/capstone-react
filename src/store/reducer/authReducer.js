@@ -1,6 +1,6 @@
 const initAuthState = {
     user: {
-        loginStatus: false
+        loginStatus: true
     }
 };
 

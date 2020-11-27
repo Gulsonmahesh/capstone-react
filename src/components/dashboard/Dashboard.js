@@ -2,18 +2,17 @@ import React, { Component } from 'react'
 import LeftPane from './LeftPane';
 import RightPane from './RightPane';
 import { connect } from 'react-redux';
+import './dashboard.css';
 
 class Dashboard extends Component {
     render() {
         return (
-            <div className="container p-0 mt-3">
-                <div className="row">
-                    <div className="col s12 m4 l3">
-                        <LeftPane />
-                    </div>
-                    <div className="col s12 m8 l9">
-                        <RightPane products= {this.props.products}/>
-                    </div>
+            <div className="p-1 ml-2 mt-2" id="dashboard">
+                <div className="leftpane">
+                    <LeftPane />
+                </div>
+                <div className="rightpane">
+                    <RightPane products= {this.props.products}/>
                 </div>
             </div>
         )
