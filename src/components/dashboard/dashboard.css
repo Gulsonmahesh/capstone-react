@@ -24,17 +24,13 @@ label {
         grid-template-areas: "sidebar"
                              "mainbar";
         justify-self: start;
-        grid-template-rows: 10vh 80vh;
+        grid-template-rows: auto 80vh;
         row-gap: 10px;
     }
 }
 
-@media (max-width: 768px) {
-    #dashboard {
-        grid-template-rows: 87vh;
-    }
+@media (max-width: 767.9px) {
 }
-
 
 /* @media (max-width: 1024px) {
 }
