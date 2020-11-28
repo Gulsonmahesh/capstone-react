@@ -7,7 +7,7 @@ import './dashboard.css';
 class Dashboard extends Component {
     render() {
         return (
-            <div className="p-1 ml-2 mt-2" id="dashboard">
+            <div className="p-0 mx-2 my-2" id="dashboard">
                 <div className="leftpane">
                     <LeftPane />
                 </div>

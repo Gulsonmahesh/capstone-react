@@ -1,14 +1,19 @@
 #dashboard {
     display: grid;
-    grid-template-columns: 25% auto;
-    grid-template-rows: 85vh;
+    grid-template-columns: 20% auto;
+    grid-template-rows: 90vh;
     grid-template-areas: "sidebar mainbar";
     justify-self: start;
     column-gap: 10px;
 }
 .leftpane {
-    border: 2px solid red;
+    border: 0px solid red;
 }
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
 .rightpane {
     border: 2px solid green;
 }
@@ -24,8 +29,12 @@
     }
 }
 
-@media (max-width: 767.9px) {
+@media (max-width: 768px) {
+    #dashboard {
+        grid-template-rows: 87vh;
+    }
 }
+
 
 /* @media (max-width: 1024px) {
 }

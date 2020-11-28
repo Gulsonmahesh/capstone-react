@@ -7,6 +7,7 @@ import ProductDetails from './components/product/ProductDetails';
 import Signup from './components/user/Signup';
 import Login from './components/user/Login';
 import Dashboard from './components/dashboard/Dashboard';
+import Footer from './components/layout/Footer';
 
 function App(props) {
   return (
@@ -20,6 +21,7 @@ function App(props) {
           <Route path= "/login" component={Login} />
         </Switch>
       </Router>
+      <Footer />
     </Fragment>
   );
 }
