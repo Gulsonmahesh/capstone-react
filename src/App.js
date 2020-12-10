@@ -1,33 +1,35 @@
 import './App.css';
 import Navbar from './components/layout/Navbar';
-import { Fragment } from 'react';
+import {lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import ProductDetails from './components/product/ProductDetails';
-import Signup from './components/user/Signup';
-import Login from './components/user/Login';
+
 import Dashboard from './components/dashboard/Dashboard';
 import Footer from './components/layout/Footer';
+import ErrorWrapper from './wrapper/ErrorWrapper';
+import Login from './components/user/Login';
+import Signup from './components/user/Signup';
 
 function App(props) {
   return (
-    <Fragment>
+    <ErrorWrapper>
       <Router>
+        <Suspense fallback="Loading">
         <Navbar loginStatus= {props.user.loginStatus} />
         <Switch>
           <Route exact path="/" component={Dashboard} />
-          <Route path="/productdetails/:id" component={ProductDetails} />
-          <Route path= "/signup" component={Signup} />
-          <Route path= "/login" component={Login} />
+          <Route path="/productdetails/:id" component={lazy(() => import ('./components/product/ProductDetails'))} />
+          <Route path= "/signup" component={ Signup } />
+          <Route path= "/login" component={ Login }  />
         </Switch>
+        </Suspense>
       </Router>
       <Footer />
-    </Fragment>
+    </ErrorWrapper>
   );
 }
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
-    prop: state.product.products,
     user: state.auth.user
   }
 }

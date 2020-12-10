@@ -1,11 +1,17 @@
 const initAuthState = {
     user: {
-        loginStatus: true
+        loginStatus: false
     }
 };
 
 const authReducer = (state = initAuthState, action) => {
-    return state;
+    switch (action.type) {
+        case 'USEUSER_LOGIN_SUCCESSR_LOGIN':
+            state.user.loginStatus = true;
+            return state;
+        default:
+            return state;
+    }
 }
 
 export default authReducer;

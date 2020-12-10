@@ -1,12 +1,24 @@
 import ProductList from '../product/ProductList';
-import React from 'react'
+import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux';
 
-export default function RightPane(props) {
-    console.log(props);
-    return (
-        <div>
+class RightPane extends Component {
+    componentDidMount() {
+        console.log(this.props.product);
+    }
+    render() {
+        return (
+        <Fragment>
             <ProductList />
-        </div>
-    )
+        </Fragment>
+        )
+    }
 }
 
+const mapStateToProps = state => {
+    return {
+        product: state.product.products,
+    }
+}
+
+export default connect(mapStateToProps)(RightPane);
