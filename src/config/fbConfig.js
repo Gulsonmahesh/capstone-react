@@ -1,8 +1,8 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+// import firebase from 'firebase/app';
+// import 'firebase/firestore';
+// import 'firebase/auth';
 
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyBCLsXItq0npDRefuNeK2cTb-Ig3bWllkQ",
     authDomain: "capstone-78cf8.firebaseapp.com",
     databaseURL: "https://capstone-78cf8.firebaseio.com",
@@ -12,8 +12,9 @@ var firebaseConfig = {
     appId: "1:634904116953:web:4102a52520c06cfe32c8c8",
     measurementId: "G-GCDZ30TLHP"
 };
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.firestore().settings({timestampsInSnapshots: true});
 
-export default firebase;
+// Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
+// firebase.firestore().settings({timestampsInSnapshots: true});
+
+export default firebaseConfig;

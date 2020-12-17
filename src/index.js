@@ -3,29 +3,36 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux'
-import RootReducer from './store/reducer/rootReducer';
-import thunk from 'redux-thunk'
-import { getFirestore, reduxFirestore } from 'redux-firestore';
-import { getFirebase, reactReduxFirebase } from 'react-redux-firebase';
-import firebase from './config/fbConfig';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import firebaseConfig  from './config/fbConfig';
+import store from './store/createStore';
+import firebase from 'firebase/app'
+import { createFirestoreInstance } from 'redux-firestore'
 
-const fbConfig = firebase;
-const rrfConfig = { userProfile: 'users' };
 
-let store = createStore(RootReducer, 
-  compose(
-    // reactReduxFirebase(fbConfig, rrfConfig),
-    applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),    
-    reduxFirestore(firebase)
-  )
-);
+// Initialize firebase instance
+firebase.initializeApp(firebaseConfig);
+
+const rrfConfig = {
+  userProfile: 'users'
+  // useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
+  // enableClaims: true // Get custom claims along with the profile
+}
+
+const rrfProps = {
+  firebase,
+  config: rrfConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance
+}
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store = {store}>
-    <App />
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <App />
+    </ReactReduxFirebaseProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
