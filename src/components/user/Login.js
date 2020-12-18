@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import{ loginAction } from '../../store/actions/authAction';
 
 class Login extends Component {
-    state = {
-        email: '',
-        password: ''
+    constructor(props) {
+        super(props);
+        this.state = { email: '', password: ''}
     }
+    
     handleChange = (e) => {
         e.preventDefault();
         this.setState({
@@ -15,8 +16,14 @@ class Login extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
         this.props.loginAction(this.state);
+        setTimeout(() => {
+            if(this.props.user) {
+                console.log('Login Sucess');        
+                this.props.history.push('/');
+            }    
+        }, 1000);
+        
     }
     render() {
         const styleContainer = {
@@ -48,9 +55,15 @@ class Login extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+        user: state.auth.loginStatus
+    }
+}
 const mapDispatchToProps = (dispatch) => {
     return {
         loginAction: (user) => dispatch(loginAction(user))
     }
 }
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

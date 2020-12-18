@@ -14,15 +14,9 @@ import { createFirestoreInstance } from 'redux-firestore'
 // Initialize firebase instance
 firebase.initializeApp(firebaseConfig);
 
-const rrfConfig = {
-  userProfile: 'users'
-  // useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
-  // enableClaims: true // Get custom claims along with the profile
-}
-
 const rrfProps = {
   firebase,
-  config: rrfConfig,
+  config: { userProfile: 'users'},
   dispatch: store.dispatch,
   createFirestoreInstance
 }
