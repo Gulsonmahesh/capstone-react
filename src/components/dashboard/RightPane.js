@@ -10,7 +10,9 @@ class RightPane extends Component {
     render() {
         return (
         <Fragment>
-            <ProductList products={this.props.product} />
+            <div className="container productcontainer">
+                <ProductList products={this.props.product} />
+            </div>
         </Fragment>
         )
     }

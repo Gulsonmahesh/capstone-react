@@ -3,7 +3,9 @@
     max-width: 500px;
     height: 80.5vh;
 }
-
+.cardContainer {
+    width: 280px;
+}
 @media (max-width: 360px)
 {
     #logincontainer {

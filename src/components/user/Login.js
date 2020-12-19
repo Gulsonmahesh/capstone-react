@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import{ loginAction } from '../../store/actions/authAction';
-
+import { Redirect } from 'react-router-dom';
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -26,6 +26,8 @@ class Login extends Component {
         
     }
     render() {
+        const sessionUser = JSON.parse(sessionStorage.getItem('userStatus'));
+        console.log(sessionUser)
         const styleContainer = {
             // container: {
             //     maxWidth : '500px',
@@ -35,7 +37,8 @@ class Login extends Component {
                 color: 'black'
             }
         }
-        return (
+        if (sessionUser && sessionUser.loginStatus) return <Redirect to="/"  />
+        return (            
             <div id="logincontainer" className="container mt-5">
             <form onSubmit = {this.handleSubmit} className="white p-sm-0 m-sm-0 p-5 m-5">
                 <h5 className="gray-text text-darken-3 mb-5">Sign In</h5>
