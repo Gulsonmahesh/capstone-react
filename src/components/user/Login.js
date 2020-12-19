@@ -27,16 +27,17 @@ class Login extends Component {
     }
     render() {
         const styleContainer = {
-            container: {
-                maxWidth : '500px'
-            },
+            // container: {
+            //     maxWidth : '500px',
+            //     height: '80vh'
+            // },
             input : {
                 color: 'black'
             }
         }
         return (
-            <div className="container mt-5" style= {styleContainer.container}>
-            <form onSubmit = {this.handleSubmit} className="white p-5 m-5">
+            <div id="logincontainer" className="container mt-5">
+            <form onSubmit = {this.handleSubmit} className="white p-sm-0 m-sm-0 p-5 m-5">
                 <h5 className="gray-text text-darken-3 mb-5">Sign In</h5>
                 <div className="input-field mb-4">
                     <label htmlFor="email">Email</label>

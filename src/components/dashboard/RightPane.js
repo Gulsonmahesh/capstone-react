@@ -3,13 +3,14 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 
 class RightPane extends Component {
-    componentDidMount() {
-        console.log(this.props.product);
-    }
+    // componentDidMount() {
+    //     console.log(this.props.product);
+    // }
+    
     render() {
         return (
         <Fragment>
-            <ProductList />
+            <ProductList products={this.props.product} />
         </Fragment>
         )
     }

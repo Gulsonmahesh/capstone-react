@@ -1,6 +1,6 @@
 #dashboard {
     display: grid;
-    grid-template-columns: 20% auto;
+    grid-template-columns: 20% 78%;
     grid-template-rows: 78vh;
     grid-template-areas: "sidebar mainbar";
     justify-self: start;
@@ -50,6 +50,6 @@ label {
 
 @media (max-width: 1024px) {
     #dashboard {
-        grid-template-rows: 78vh;
+        grid-template-rows: 84vh;
     }
 }

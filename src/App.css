@@ -1,0 +1,19 @@
+
+#logincontainer {
+    max-width: 500px;
+    height: 80.5vh;
+}
+
+@media (max-width: 360px)
+{
+    #logincontainer {
+        height: 76vh !important;
+    }
+}
+
+@media (max-width: 480px)
+{
+    #logincontainer {
+        height: 81vh;
+    }
+}
