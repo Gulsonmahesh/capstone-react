@@ -15,7 +15,7 @@ export default class LeftPane extends Component {
       return { [evt.target.id]: evt.target.value }
     });
     setTimeout(() => {
-      console.log(this.state.brand);
+      console.log(this.state.selectedBrand);
     }, 500);
   }
   render() {
