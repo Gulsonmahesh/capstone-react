@@ -12,7 +12,7 @@ const Signout = (props) => {
     return (
         <Fragment>
             <ul className="right mr-3">
-                <li><a href="/"><i className="medium material-icons">add_shopping_cart</i></a></li>
+                <li><a href="/cart"><i className="medium material-icons">add_shopping_cart</i></a></li>
                 <li><a href="/" onClick={(event) => logout(event)} >Sign Out</a></li>
                 <li className="divider"></li>
                 <li><span data-target="dropdown1" className="btn-floating btn-small  d-none d-lg-block d-md-block waves-effect waves-light blue dropdown-trigger mt-3">MM</span></li>

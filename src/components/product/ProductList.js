@@ -8,7 +8,6 @@ class ProductList extends Component {
         let selectedPrice = '';
         let productData = [];
 
-        console.log(this.props.filterProduct);
         if (this.props.filterProduct !== null ){
             selectedBrand = (this.props.filterProduct.selectedBrand) ? this.props.filterProduct.selectedBrand.split(':')[1].trim() : '';
             selectedPrice = (this.props.filterProduct.selectedPrice) ? this.props.filterProduct.selectedPrice : '';

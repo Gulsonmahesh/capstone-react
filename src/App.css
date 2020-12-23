@@ -4,12 +4,10 @@
     height: 80.5vh;
 }
 .cardContainer {
-    max-width: 50%;
     display: flex;
-    position: absolute;
-    /* width: 280px;
-    
-    gap: 10px; */
+    position: relative;
+    gap: 10px;
+    overflow: auto;
 }
 @media (max-width: 360px)
 {

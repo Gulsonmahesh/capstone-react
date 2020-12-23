@@ -13,8 +13,6 @@ import ErrorWrapper from './wrapper/ErrorWrapper';
 import Login from './components/user/Login';
 import Signup from './components/user/Signup';
 
-
-
 class App extends Component {
   render() {
     return (
@@ -27,6 +25,7 @@ class App extends Component {
             <Route path="/productdetails/:id" component={lazy(() => import ('./components/product/ProductDetails'))} />
             <Route path= "/signup" component={ Signup } />
             <Route path= "/login" component={ Login }  />
+            <Route path= "/cart" component={ lazy(() => import ('./components/product/Cart')) }  />
           </Switch>
           </Suspense>
         </Router>

@@ -14,16 +14,19 @@ label {
     margin-bottom: .5rem;
 }
 
-.rightpane {
-    border: 2px solid green;
+.cardcontent {
+    min-width : 25%;
 }
+/* .rightpane {
+    border: 2px solid green;
+} */
 
 .productcontainer {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     min-width: auto;
     flex-wrap: inherit;
-    position: relative
+    position: relative */
 }
 
 @media (max-width: 480px) {
