@@ -6,16 +6,23 @@ export default class LeftPane extends Component {
     selectedPrice: '1000',
     options: [{ text: 'All', value: '0: All' }, { text: 'Apple', value: '1: Apple' },
     { text: 'Realme', value: '2: Realme' }, { text: 'Nokia', value: '3: Nokia' },
-    { text: 'Motorolla', value: '4: Motorolla' }],
+    { text: 'Motorolla', value: '4: Motorolla' }, { text: 'Redmi', value: '5: Redmi' }],
+
     price: [{ text: '0 - 1000', value: '1000' }, { text: '1000 - 2000', value: '2000' },
     { text: '2000 - 5000', value: '5000' }, { text: '5000 - 10000', value: '10000' }]
+    
   };
   changeHandler = (evt) => {
     this.setState(function () {
       return { [evt.target.id]: evt.target.value }
     });
     setTimeout(() => {
-      console.log(this.state.selectedBrand);
+      const filterValue =  {
+        selectedBrand: this.state.selectedBrand,
+        selectedPrice: this.state.selectedPrice
+      };
+
+      this.props.onChangeFilter(filterValue)
     }, 500);
   }
   render() {

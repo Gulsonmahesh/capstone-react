@@ -4,7 +4,12 @@
     height: 80.5vh;
 }
 .cardContainer {
-    width: 280px;
+    max-width: 50%;
+    display: flex;
+    position: absolute;
+    /* width: 280px;
+    
+    gap: 10px; */
 }
 @media (max-width: 360px)
 {

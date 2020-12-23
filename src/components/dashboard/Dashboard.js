@@ -5,14 +5,25 @@ import { connect } from 'react-redux';
 import './dashboard.css';
 
 class Dashboard extends Component {
+    constructor() {
+        super();
+        this.state = { filter: null } ;
+    }
+
+    updateFilter = filter => {
+        this.setState({
+            filter:filter
+        });
+    }
+
     render() {
         return (
             <div className="p-0 mx-2 my-2" id="dashboard">
                 <div className="leftpane">
-                    <LeftPane />
+                    <LeftPane onChangeFilter = {filterValue => this.updateFilter(filterValue)} />
                 </div>
                 <div className="rightpane">
-                    <RightPane products= {this.props.products}/>
+                    <RightPane products= {this.props.products} filter= {this.state.filter} />
                 </div>
             </div>
         )
