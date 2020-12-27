@@ -39,9 +39,9 @@ export default class Signup extends Component {
         const registering = user.registering;
 
         return (
-            <div className="container mt-0">
+            <div className="container mt-5">
                 <div className="row">
-                    <div className="col-lg-8 offset-lg-2">
+                    <div className="col-lg-8 offset-lg-2 mt-4">
                     <h2>Register</h2>
                     <form name="form" onSubmit={this.handleSubmit}>
                         <div className="form-group">

@@ -42,23 +42,27 @@ class Login extends Component {
             }
         }
         if (sessionUser && sessionUser.loginStatus) return <Redirect to="/"  />
-        return (            
-            <div id="logincontainer" className="container mt-5">
-            <form onSubmit = {this.handleSubmit} className="white p-sm-0 m-sm-0 p-5 m-5">
-                <h5 className="gray-text text-darken-3 mb-5">Sign In</h5>
-                <div className="input-field mb-4">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email" onChange={this.handleChange} style= {styleContainer.input} value ={this.state.email} />
+        return (
+            
+            <div id="logincontainer" className="container mt-5 align-items-center">
+                <div className="row p-5">
+                    <div className="col-lg-8 offset-lg-2 mt-4">
+                        <form name="form" onSubmit={this.handleSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input className="form-control" type="email" id="email" onChange={this.handleChange} style= {styleContainer.input} value ={this.state.email} />
+                        </div>
+                        <div className="input-field form-group">
+                            <label htmlFor="password">Password</label>
+                            <input className="form-control" type="password" id="password" onChange={this.handleChange} style= {styleContainer.input} value ={this.state.password}/>
+                        </div>
+                        <div className="input-field form-group">
+                            <button className="btn btn-primary lighten-1 z-depth-1 white-text mr-5">Login</button>
+                            <button className="btn" onClick = {this.clearfields}>Clear</button>
+                        </div>
+                        </form>
+                    </div>
                 </div>
-                <div className="input-field">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password" onChange={this.handleChange} style= {styleContainer.input} value ={this.state.password}/>
-                </div>
-                <div className="input-field">
-                    <button className="btn pink lighten-1 z-depth-1 white-text mr-5">Login</button>
-                    <button className="btn blue lighten-1 z-depth-1 white-text" onClick = {this.clearfields}>Clear</button>
-                </div>
-            </form>   
             </div>
         )
     }
