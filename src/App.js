@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-
-import './App.css';
-
 import Navbar from './components/layout/Navbar';
 import {lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -12,6 +9,7 @@ import Footer from './components/layout/Footer';
 import ErrorWrapper from './wrapper/ErrorWrapper';
 import Login from './components/user/Login';
 import Signup from './components/user/Signup';
+import './App.css';
 
 class App extends Component {
   render() {

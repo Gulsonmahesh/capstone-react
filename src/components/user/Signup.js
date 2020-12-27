@@ -39,7 +39,7 @@ export default class Signup extends Component {
         const registering = user.registering;
 
         return (
-            <div className="container mt-1">
+            <div className="container mt-0">
                 <div className="row">
                     <div className="col-lg-8 offset-lg-2">
                     <h2>Register</h2>

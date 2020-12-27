@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logOut } from '../../store/actions/authAction';
 
@@ -11,11 +12,12 @@ const Signout = (props) => {
     
     return (
         <Fragment>
-            <ul className="right mr-3">
-                <li><a href="/cart"><i className="medium material-icons">add_shopping_cart</i></a></li>
-                <li><a href="/" onClick={(event) => logout(event)} >Sign Out</a></li>
-                <li className="divider"></li>
-                <li><span data-target="dropdown1" className="btn-floating btn-small  d-none d-lg-block d-md-block waves-effect waves-light blue dropdown-trigger mt-3">MM</span></li>
+            <ul className="navbar-nav ml-auto flex-row mr-3 align-center">
+                {/* <li><Link href="/cart"><i className="medium material-icons">add_shopping_cart</i></Link></li> */}
+                <li><Link to="/" onClick={(event) => logout(event)} >Sign Out</Link></li>
+                <li>
+                    <span data-target="dropdown1" className="btn btn-small d-none d-lg-block d-md-block">MM</span>
+                </li>
             </ul>
         </Fragment>
     )

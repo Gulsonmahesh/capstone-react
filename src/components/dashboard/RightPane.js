@@ -6,7 +6,7 @@ class RightPane extends Component {
     render() {
         return (
         <Fragment>
-            <div className="container productcontainer">
+            <div className="container">
                 <ProductList products={this.props.product} filterProduct = {this.props.filter} />
             </div>
         </Fragment>
