@@ -23,11 +23,15 @@ class Login extends Component {
                 this.props.history.push('/');
             }    
         }, 1000);
-        
     }
+    clearfields = (e) => {
+        e.preventDefault();
+        this.setState({email: '', password: ''});
+    }
+
     render() {
         const sessionUser = JSON.parse(sessionStorage.getItem('userStatus'));
-        console.log(sessionUser)
+        // console.log(sessionUser)
         const styleContainer = {
             // container: {
             //     maxWidth : '500px',
@@ -44,14 +48,15 @@ class Login extends Component {
                 <h5 className="gray-text text-darken-3 mb-5">Sign In</h5>
                 <div className="input-field mb-4">
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email" onChange={this.handleChange} style= {styleContainer.input} />
+                    <input type="email" id="email" onChange={this.handleChange} style= {styleContainer.input} value ={this.state.email} />
                 </div>
                 <div className="input-field">
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" onChange={this.handleChange} style= {styleContainer.input} />
+                    <input type="password" id="password" onChange={this.handleChange} style= {styleContainer.input} value ={this.state.password}/>
                 </div>
                 <div className="input-field">
-                    <button className="btn pink lighten-1 z-depth-1 white-text">Login</button>
+                    <button className="btn pink lighten-1 z-depth-1 white-text mr-5">Login</button>
+                    <button className="btn blue lighten-1 z-depth-1 white-text" onClick = {this.clearfields}>Clear</button>
                 </div>
             </form>   
             </div>
@@ -60,7 +65,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
+    // console.log(state);
     return {
         user: state.auth.loginStatus
     }
