@@ -4,15 +4,12 @@ import { useDispatch } from 'react-redux';
 import { addtocart } from '../../store/actions/productAction';
 
 const Product = ({productData}) => {
-    console.log(productData.length);
     const disp = useDispatch();
 
     const openProduct = (product) => {
         alert(product.title);
     }
     function addtoCart(sellectedProduct) {
-        console.log(sellectedProduct);
-        alert('test')
         disp(addtocart(sellectedProduct));
     }
 

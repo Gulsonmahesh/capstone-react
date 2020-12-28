@@ -1,4 +1,4 @@
-let initProductState = {
+const initProductState = {
     products: [
         {id:1, title:'Iphone SE', modal: 'Apple'},
         {id:2, title:'Moto 8', modal: 'Motorolla'},
@@ -7,15 +7,22 @@ let initProductState = {
         {id:5, title:'Redmi Note 9', modal: 'Redmi'},
         {id:6, title:'Iphone 12', modal: 'Apple'},
     ],
-    productsincart: []
+    productsincart: sessionStorage.getItem('productsincart') ? JSON.parse(sessionStorage.getItem('productsincart')) : []
 };
 
 const productReducer = (state = initProductState, action) => {
+    
+    let productsincart = state.productsincart;
+
     switch (action.type) {
         case 'PROD_ADD':
-            state.productsincart = [...state.productsincart, action.product];
-            console.log('Product added to cart', state.productsincart)
-            return state;
+            productsincart.push(action.product);
+            sessionStorage.setItem('productsincart', JSON.stringify(productsincart));
+            return { ...state, productsincart };
+        case 'PROD_REMOVE':
+            productsincart = productsincart.filter( product => product.id !== action.product.id);
+            return { ...state, productsincart };
+
         default:
             return state;
     }
