@@ -1,8 +1,61 @@
 
+li {
+    list-style: none !important;
+}
+
 #logincontainer {
     max-width: 500px;
     height: 80.5vh;
 }
+._3v1-ww {
+    padding: 18px 8px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    width: 98%;
+    border: none;
+    float: left;
+    background: #ff9f00;
+    color: #fff;
+}
+
+._2KpZ6l._3AWRsL {
+    background: #fb641b;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    border: none;
+    color: #fff;    
+}
+
+.ihZ75k {
+    padding: 18px 8px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    float: right;
+    width: 98%;
+}
+
+._2U9uOA {
+    text-transform: uppercase;
+    width: 100%;
+    font-size: 16px;
+    outline: none !important;
+}
+
+._2KpZ6l {
+    display: inline-block;
+    border-radius: 2px;
+    color: #212121;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: box-shadow .2s ease;
+    vertical-align: super;
+    background: #fff;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+    border: 1px solid #e0e0e0;
+}
+
 .cardContainer {
     display: flex;
     position: relative;

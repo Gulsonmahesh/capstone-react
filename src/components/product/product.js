@@ -1,11 +1,21 @@
-
 import React, { Fragment }  from 'react';
 import Image from "./sample-1.jpg";
+import { useDispatch } from 'react-redux';
+import { addtocart } from '../../store/actions/productAction';
 
 const Product = ({productData}) => {
+    console.log(productData.length);
+    const disp = useDispatch();
+
     const openProduct = (product) => {
         alert(product.title);
     }
+    function addtoCart(sellectedProduct) {
+        console.log(sellectedProduct);
+        alert('test')
+        disp(addtocart(sellectedProduct));
+    }
+
     if( productData.length ) {
         const productList = productData.reduce((resultArray, item, index) => {
         const chunkIndex = Math.floor(index/3)
@@ -30,7 +40,7 @@ const Product = ({productData}) => {
                                         <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                         </div>
                                         <div className="card-footer">
-                                        <small className="text-muted">Last updated 3 mins ago</small>
+                                            <button className="addtocart" onClick={() => addtoCart(product)}>ADD TO CART</button>
                                         </div>
                                     </div>
                                 </div>
@@ -44,7 +54,9 @@ const Product = ({productData}) => {
     } else {
         return (
             <Fragment>
-                <div className="Container d-flex shadow-lg p-3 mb-5 bg-white rounded mt-5"> No Products Available. Please Modify the search Critiria</div>
+                <div className="Container d-flex shadow-lg p-3 mb-5 bg-white rounded mt-5"> 
+                    No Products Available. Please Modify the search Critiria
+                </div>
             </Fragment>
         )
     }
