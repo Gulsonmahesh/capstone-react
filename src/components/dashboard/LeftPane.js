@@ -36,14 +36,14 @@ export default class LeftPane extends Component {
             }
           </select>
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="selectedPrice">By Prices:</label>
           <select name="selectedPrice" id="selectedPrice" className="form-control ng-untouched ng-pristine ng-valid" value={this.state.selectedPrice} onChange={this.changeHandler}>
             {
               this.state.price.map(option => <option value={option.value} key={option.value} className="ng-star-inserted">{option.text}</option>)
             }
           </select>
-        </div>
+        </div> */}
       </div>
     );
   }
