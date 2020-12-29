@@ -9,8 +9,16 @@ const Product = ({productData}) => {
     const openProduct = (product) => {
         alert(product.title);
     }
-    function addtoCart(sellectedProduct) {
-        disp(addtocart(sellectedProduct));
+    function addtoCart(selectedProduct) {
+        let alreadyExist = 0;
+        if(sessionStorage.getItem('productsincart')) {
+            alreadyExist =   (JSON.parse(sessionStorage.getItem('productsincart')).filter(product => product.id === selectedProduct.id)).length;
+        }
+        if (alreadyExist) {
+            alert('Product already Exist in the cart')
+            return false;
+        }
+        disp(addtocart({...selectedProduct,count:1}));
     }
 
     if( productData.length ) {

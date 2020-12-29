@@ -1,126 +1,121 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
+import { countChanger, removeFromcart } from '../../store/actions/productAction';
+import AlertModal from './AlertModal';
 
 class Checkout extends Component {
-  state = {};
-  componentDidMount() {
-    document.querySelector("#cartlistitem").style.display = "none";
+  constructor(props){
+    super(props);
+    this.state = { totalPrice: 0, notproceedtopayment: null }
   }
+  
+  proceedtopayment = () => {
+      this.setState({notproceedtopayment: (!sessionStorage.getItem('userStatus') ? true : false)});
+  }
+
+  getProductPricetotal = () => {
+    let productPrice = this.props.selectedProduct.map(product => product.price*product.count).reduce((a, b) => a + b, 0);
+    this.setState({totalPrice : productPrice});
+  }
+
+  setpagevisibility = (displayType, scrollType) => {
+    document.querySelector("#cartlistitem").style.display = displayType;
+    document.querySelector("html").style.overflow = scrollType;
+    this.getProductPricetotal();
+  }
+
+  componentDidMount() {
+    this.setpagevisibility('none', 'auto');
+  }
+
+  componentWillUnmount() {
+    this.setpagevisibility('block', 'hidden');
+  }
+
+  countChange = (product,type) => {
+    this.props.countChanger(product,type)
+    setTimeout(() => {
+      this.getProductPricetotal()
+    }, 0);
+  }
+
+  reRoutetoHome = (path) => {
+    this.closeModal();
+    this.props.history.push(path);
+  }
+
+  removeProduct = (id) => {
+    this.props.removeFromcart(id);
+    setTimeout(() => {
+      if(this.props.selectedProduct.length <=0) {
+        this.reRoutetoHome('/');
+      } else {
+        this.getProductPricetotal()
+      }
+    }, 500);
+  }
+
+  closeModal = () => {
+    this.setState({notproceedtopayment : null})
+  }
+
   render() {
-    console.log(this.props.selectedProduct);
     const selectedProducts = this.props.selectedProduct;
-    return (
-      <Fragment>
-        <div className="container mt-5">
-          <div className="row p-5">
-            <div className="col-12 col-md-9 col-lg-9">
-              <div className="accordion" id="accordionproductcheckout">
-                {selectedProducts.map((product, index) => (
-                  <div key={index} className="accordion-item">
-                    <h2 className="accordion-header" id="headingOne">
-                      <button
-                        className="accordion-button"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target={`#collapse${index}`}
-                        aria-expanded="false"
-                        aria-controls={`collapseOne${index}`}
-                      >
-                        {product.title}
-                      </button>
-                    </h2>
-                    <div
-                      id={`collapse${index}`}
-                      className="accordion-collapse collapse false"
-                      aria-labelledby="headingOne"
-                      data-bs-parent="#accordionproductcheckout"
-                    >
-                      <div className="accordion-body">
-                        <strong>
-                          This is the first item's accordion body.
-                        </strong>{" "}
-                        It is hidden by default, until the collapse plugin adds
-                        the appropriate classes that we use to style each
-                        element. These classes control the overall appearance,
-                        as well as the showing and hiding via CSS transitions.
-                        You can modify any of this with custom CSS or overriding
-                        our default variables. It's also worth noting that just
-                        about any HTML can go within the{" "}
-                        <code>.accordion-body</code>, though the transition does
-                        limit overflow.
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="col-12 col-md-3 col-lg-3">
-              <div
-                className="_1YokD2 _3Mn1Gg col-4-12 _78xt5Y"
-                style={{padding: '0px 0px 0px 16px'}}
-              >
-                <div className="_1AtVbE col-12-12">
-                  <div className="dimARw">
-                    <div className="_35mLK5">
-                      <span className="_3aPjap">Price details</span>
-                      <div className="_I_XQO">
-                        <div className="Ob17DV">
-                          <div className="_24KATy">
-                            <div className="_2npqm0">Price (1 item)</div>
-                          </div>
-                          <span> ₹999</span>
-                        </div>
-                        <div className="Ob17DV">
-                          <div className="_24KATy">
-                            <div className="_2npqm0">Discount</div>
-                          </div>
-                          <div className="_1YVZr_">− ₹845</div>
-                        </div>
-                        <div className="Ob17DV">
-                          <div className="_24KATy">
-                            <div className="_2npqm0">Delivery Charges</div>
-                          </div>
-                          <span> ₹40</span>
-                        </div>
-                        <div className="_3LxTgx">
-                          <div className="Ob17DV">
-                            <div className="_24KATy">
-                              <div className="_2npqm0">Total Amount</div>
-                            </div>
-                            <span>
-                              <div className="_1dqRvU">
-                                <div className="Ob17DV _3X7Jj1">
-                                  <div className="_24KATy">
-                                    <div className="_2npqm0"></div>
-                                  </div>
-                                  <span> ₹194</span>
-                                </div>
-                              </div>
-                            </span>
-                          </div>
-                        </div>
-                        <div className="_3s5O6i">
-                          You will save ₹805 on this order
-                        </div>
-                      </div>
-                    </div>
+    const openModal = this.state.notproceedtopayment
+      return (
+        <Fragment>
+          {
+              openModal ? <AlertModal gotologin={() => this.reRoutetoHome('/login')} loginStatus={this.state.notproceedtopayment} closeModal={this.closeModal} message= "Please login before proceed to Payment" />
+              : (openModal === false ) ? <AlertModal loginStatus={this.state.notproceedtopayment} closeModal={this.closeModal} message= "Module yet to develop" /> : '' 
+            }
+          <div className="container mt-5 pt-5">
+            <div className="row">
+              <div className="col-12 col-md-8 col-lg-8 p-2">
+              { 
+                this.props.selectedProduct.length>0 && selectedProducts.map((product, index) => <div key={index} className="card mb-3" >
+                <div className="card-body">
+                  <h5 className="card-title">{product.title}</h5>
+                  <h6 className="card-subtitle mb-2 text-muted d-none">{product.count}</h6>
+                  <p className="card-text">Price : {product.price}</p>
+                  <div>
+                    <button type="button" className={"btn btn-secondary mr-2 " + (product.count === 1 ? "disabled " : "")}  onClick={() => this.countChange(product, 'decrease')}>-</button>
+                    <button type="button" className="btn btn-light mr-2 disabled">{product.count}</button>
+                    <button type="button" className="btn btn-primary mr-4"  onClick={() => this.countChange(product, 'increase')}>+</button>
+                    <button className="btn btn-danger" onClick={()=> this.removeProduct(product.id)}>Remove</button>
                   </div>
                 </div>
+              </div>)
+              }
+              </div>
+              <div className="col-12 col-md-4 col-lg-4 p-2">
+              <div className="card mb-3" >
+                <div className="card-header">Total Price</div>
+                <div className="card-body">
+                <p className="card-text">{this.state.totalPrice}</p>
+                </div>
+                <div className="card-footer">
+                  <button type="button" className="btn btn-success w-100 d-block mb-3" onClick={this.proceedtopayment}>Proceed to Payment</button>
+                  <button type="button" className="btn btn-info w-100 d-block" onClick={() => this.reRoutetoHome('/')}>Back to Shopping</button>
+                </div>
+              </div>
               </div>
             </div>
           </div>
-        </div>
-      </Fragment>
-    );
+        </Fragment>
+      );
+    }
+  }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    countChanger: (product,type) => dispatch(countChanger(product,type)),
+    removeFromcart: (id) => dispatch(removeFromcart(id))
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
-    selectedProduct: state.product.productsincart
-      ? state.product.productsincart
-      : null,
+    selectedProduct: state.product.productsincart ? state.product.productsincart : null,
   };
 };
-export default connect(mapStateToProps)(Checkout);
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
