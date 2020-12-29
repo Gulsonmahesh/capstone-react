@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { createUser } from '../../store/actions/authAction';
+import { connect } from 'react-redux';
 
-export default class Signup extends Component {
+class Signup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            firstName: '', 
-            lastName: '', 
-            username: '', 
-            password: '', 
-            email: '', 
-            submitted: false,
-            registering: false
+            firstName: '', lastName: '',  username: '', password: '', 
+            email: '', submitted: false, registering: false
         }
     }
 
@@ -26,7 +23,7 @@ export default class Signup extends Component {
         e.preventDefault();
         this.setState({submitted : true});
         console.log(this.state);
-
+        this.props.createUser(this.state);
         // setSubmitted(true);
         // if (user.firstName && user.lastName && user.username && user.password && ) {
         //     dispatch(userActions.register(user));
@@ -94,3 +91,10 @@ export default class Signup extends Component {
         )
     }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createUser : (user) => dispatch(createUser(user))
+    }
+}
+export default connect(null, mapDispatchToProps)(Signup);

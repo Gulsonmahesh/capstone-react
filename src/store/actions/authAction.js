@@ -9,6 +9,12 @@ export const loginAction = (user) => {
     }
 }
 
+export const createUser = (userDetails)  => {
+    return (dispatch) => {
+        dispatch({type: 'CREATE_USER', userDetails})
+    }
+}
+
 export const logOut = function() {
     return (dispatch) => {
         dispatch({type: 'USER_LOG_OUT' })
