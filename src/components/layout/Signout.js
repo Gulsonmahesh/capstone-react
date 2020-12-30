@@ -29,4 +29,11 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Signout)
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        // userDetails : state.
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signout)

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { createUser } from '../../store/actions/authAction';
-import { connect } from 'react-redux';
+import { API_BASE_ADDRESS, API_OPTION } from '../../utilities/constants';
 
 class Signup extends Component {
     constructor(props) {
@@ -22,12 +21,18 @@ class Signup extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.setState({submitted : true});
-        console.log(this.state);
-        this.props.createUser(this.state);
-        // setSubmitted(true);
-        // if (user.firstName && user.lastName && user.username && user.password && ) {
-        //     dispatch(userActions.register(user));
-        // }
+        fetch(`${API_BASE_ADDRESS}/users`, {...API_OPTION, body: JSON.stringify(this.state)}
+        ).then(response => response.json())
+        .then(data => {
+            alert("USer Added Successufully");
+            setTimeout(() => {
+                this.props.history.push('/login');
+            }, 1000);
+          
+        })
+        .catch((error) => {
+          console.log('Error:', error);
+        });
     }
 
     render() {
@@ -92,9 +97,4 @@ class Signup extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        createUser : (user) => dispatch(createUser(user))
-    }
-}
-export default connect(null, mapDispatchToProps)(Signup);
+export default Signup;

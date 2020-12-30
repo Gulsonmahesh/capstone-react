@@ -15,25 +15,18 @@ if(userDetails && userDetails.loginStatus) {
 const authReducer = (state = initAuthState, action) => {
     switch (action.type) {
         case 'USER_LOGIN_SUCCESS':
-            if(action.user.email === 'mahesh@test.com' && action.user.password === 'mahesh') {
-                state =  {
-                    ...state,
-                    loginStatus : true,
-                    authError: null,
-                    user: action.user.email
-                } 
-                
-            } else {
-                state = {
-                    ...state,
-                    loginStatus: false,
-                    authError: 'Login Failed',
-                    user: null
-                }
+            state =  {
+                ...state,
+                loginStatus : true,
+                authError: null,
+                user: action.user
             }
             sessionStorage.setItem('userStatus', JSON.stringify(state));
             return  state;
         case 'USER_LOGIN_FAILURE':
+            if(sessionStorage.getItem('userStatus')) {
+                sessionStorage.removeItem('userStatus')
+            }
             return {
                 ...state,
                 loginStatus: false,

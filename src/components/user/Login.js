@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import{ loginAction } from '../../store/actions/authAction';
+import{ loginAction, loginFailure } from '../../store/actions/authAction';
 import { Redirect } from 'react-router-dom';
+import { API_BASE_ADDRESS } from '../../utilities/constants'
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -16,13 +18,25 @@ class Login extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.loginAction(this.state);
-        setTimeout(() => {
-            if(this.props.user) {
-                console.log('Login Sucess');        
-                this.props.history.push('/');
-            }    
-        }, 1000);
+        fetch(`${API_BASE_ADDRESS}/users?email=${this.state.email}&password=${this.state.password}`).then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if(data.length) {
+                alert("Login Successufully");
+                this.props.loginAction(data);
+            } else {
+                alert("Login unsuccessufully");
+                this.props.loginFailure('No User data available');
+            }
+            setTimeout(() => {
+                if(this.props.user) {
+                    this.props.history.push('/');
+                }    
+            }, 1000);
+        })
+        .catch((error) => {
+            this.props.loginFailure(error);
+        });
     }
     clearfields = (e) => {
         e.preventDefault();
@@ -76,7 +90,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        loginAction: (user) => dispatch(loginAction(user))
+        loginAction: (user) => dispatch(loginAction(user)),
+        loginFailure: (error) => dispatch(loginFailure(error))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

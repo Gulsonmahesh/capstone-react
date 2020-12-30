@@ -3,15 +3,18 @@ import Navbar from './components/layout/Navbar';
 import {lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { initProducts } from './store/actions/productAction';
 import Dashboard from './components/dashboard/Dashboard';
-import Footer from './components/layout/Footer';
+// import Footer from './components/layout/Footer';
 import ErrorWrapper from './wrapper/ErrorWrapper';
 import Login from './components/user/Login';
 import Signup from './components/user/Signup';
 import './App.css';
 
 class App extends Component {
+  componentDidMount(){
+    this.props.initProducts();
+  }
   render() {
     return (
       <ErrorWrapper>
@@ -32,10 +35,17 @@ class App extends Component {
     );
   }  
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    initProducts: () => dispatch(initProducts())
+  }
+}
+
 const mapStateToProps = state => {
   return {    
     user: state.auth
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

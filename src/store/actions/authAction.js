@@ -3,15 +3,18 @@ export const loginAction = (user) => {
         try {
             dispatch({type: 'USER_LOGIN_SUCCESS', user});
         } catch(error) {
-            console.log(error);
-            dispatch({type: 'USER_LOGIN_FAILURE', error });
+            console.log(error);            
         }
     }
 }
 
-export const createUser = (userDetails)  => {
+export const loginFailure = (error) => {
     return (dispatch) => {
-        dispatch({type: 'CREATE_USER', userDetails})
+        try {
+            dispatch({type: 'USER_LOGIN_FAILURE', error });
+        } catch(error) {
+            console.log(error);
+        }  
     }
 }
 

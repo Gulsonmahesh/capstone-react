@@ -1,3 +1,19 @@
+import { API_BASE_ADDRESS } from '../../utilities/constants';
+
+export const initProducts = () => {
+    return async (dispatch) => {
+        try {
+            await fetch(`${API_BASE_ADDRESS}/modals`).then( res => res.json()).then( result => {
+                dispatch({type: 'LOAD_PRODUCT', result});
+            })
+            
+        } catch(error) {
+            console.log(error);
+            dispatch({type: 'LOAD_PRODUCT_FAILURE', error });
+        }
+    } 
+}
+
 export const addtocart = (product) => {
     return (dispatch) => {
         try {
