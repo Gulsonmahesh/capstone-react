@@ -10,7 +10,7 @@ const Product = ({productData}) => {
     const history = useHistory();
     
     const openProduct = (product) => {
-        history.push({pathname: `/product/${product.name}`, params: 'test'});
+        history.push({pathname: `/product/${product.name}`});
     }
 
     function addtoCart(selectedProduct) {
@@ -41,13 +41,13 @@ const Product = ({productData}) => {
                     productList.map((productRow, index) => <div className="row mb-3" key= {index}>{
                         productRow.map((product) => {
                             return (
-                                <div className="col-4" key ={product.name}>
-                                    <div className="card">
-                                        <img className="card-img-top" src={product.images} alt={product.name} onClick={() => openProduct(product)} />
-                                        <div className="card-body">
-                                        <h5 className="card-title">{product.name}</h5>                                        
+                                <div className="col-sm-12 col-md-4 col-lg-4" key ={product.name}>
+                                    <div className="card"  style={{height: '400px', width: "225px"}}>
+                                        <img className="card-img-top mt-3" src={product.images} alt={product.name} onClick={() => openProduct(product)} />
+                                        <div className="card-body d-flex justify-content-center">
+                                            <h5 className="card-title" onClick={() => openProduct(product)} >{product.name}</h5>                                        
                                         </div>
-                                        <div className="card-footer">
+                                        <div className="card-footer d-flex justify-content-center">
                                             <button className="addtocart" onClick={() => addtoCart(product)}>ADD TO CART</button>
                                         </div>
                                     </div>

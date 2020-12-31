@@ -1,161 +1,235 @@
 {
   "users": [
     {
-      "firstName": "Mahesh",
-      "lastName": "Madasamy",
-      "username": "gulsonmahesh",
+      "firstName": "Priya",
+      "lastName": "Mahesh",
+      "username": "priyamahesh",
       "password": "test14e",
-      "email": "mahesh@test.com",
+      "email": "priya@test.com",
       "submitted": false,
       "registering": false,
-      "id": 1
+      "id": 2,
+      "admin": false
+    },
+    {
+      "firstName": "Mahesh",
+      "lastName": "Madasamy",
+      "username": "gulson_mahesh",
+      "password": "test14e",
+      "email": "mahesh@test.com",
+      "submitted": true,
+      "registering": false,
+      "loginStatus": true,
+      "id": 1,
+      "ädmin": true
     }
   ],
   "modals": [
     {
-      "name":"Honor 7X 64GB",
-      "brand":"Honor",
-      "images":"https://www.91-img.com/pictures/123378-v2-honor-7x-64gb-mobile-phone-large-1.jpg",
-      "announced":"07-Dec-2017",
-      "mrp":15999,
-      "keyFeatures":{
-         "performance":"HiSilicon Kirin",
-         "display":"5.93\" (15.06 cm)",
-         "storage":"64 GB",
-         "camera":"16 MP + 2 MP",
-         "battery":"3340 mAh",
-         "ram":"4 GB"
+      "id": 1,
+      "name": "Honor 7X 64GB",
+      "brand": "Honor",
+      "images": "https://www.91-img.com/pictures/123378-v2-honor-7x-64gb-mobile-phone-large-1.jpg",
+      "announced": "07-Dec-2017",
+      "mrp": 15999,
+      "keyFeatures": {
+        "performance": "HiSilicon Kirin",
+        "display": "5.93\" (15.06 cm)",
+        "storage": "64 GB",
+        "camera": "16 MP + 2 MP",
+        "battery": "3340 mAh",
+        "ram": "4 GB"
       },
-      "redirect":false,
-      "redirectId":0,
-      "specs":{
-         "key_specs":{
-            "display":"5.93 inches",
-            "front_camera":"8 MP",
-            "battery":"3340 mAh",
-            "processor":"HiSilicon Kirin 659",
-            "ram":"4 GB",
-            "rear_camera":"16 MP + 2 MP"
-         },
-         "special_features":{
-            "fingerprint_sensor_position":"Rear",
-            "other_sensors":"Light sensor, Proximity sensor, Accelerometer, Compass",
-            "fingerprint_sensor":"Yes "
-         },
-         "general":{
-            "quick_charging":"No",
-            "operating_system":"Android v7.0 (Nougat)",
-            "sim_slots":"Dual SIM, GSM+GSM",
-            "model":"7X 64GB",
-            "launch_date":"December 7, 2017 (Official)",
-            "custom_ui":"EMUI",
-            "brand":"Honor",
-            "sim_size":"SIM1: Nano SIM2: Nano (Hybrid)",
-            "network":"4G: Available (supports Indian bands)  3G: Available, 2G: Available",
-            "fingerprint_sensor":"Yes "
-         },
-         "multimedia":{
-            "loudspeaker":"Yes ",
-            "fm_radio":"Yes ",
-            "audio_jack":"3.5 mm"
-         },
-         "performance":{
-            "chipset":"HiSilicon Kirin 659",
-            "graphics":"Mali-T830 MP2",
-            "processor":"Octa core (2.36 GHz, Quad core, Cortex A53 + 1.7 GHz, Quad core, Cortex A53)",
-            "architecture":"64 bit",
-            "ram":"4 GB"
-         },
-         "design":{
-            "build_material":"Case: MetalBack: Metal",
-            "thickness":"7.6 mm",
-            "width":"75.3 mm",
-            "weight":"165 grams",
-            "height":"156.5 mm",
-            "colours":"Black, Blue, Gold"
-         },
-         "display":{
-            "display_type":"IPS LCD",
-            "aspect_ratio":"18:9",
-            "bezelless_display":"Yes ",
-            "pixel_density":"407 ppi",
-            "screen_protection":"Corning Gorilla Glass",
-            "screen_to_body_ratio_calculated":"77.01 %",
-            "screen_size":"5.93 inches (15.06 cm)",
-            "screen_resolution":"1080 x 2160 pixels",
-            "touch_screen":"Yes Capacitive Touchscreen, Multi-touch"
-         },
-         "storage":{
-            "user_available_storage":"Up to 48.3 GB",
-            "internal_memory":"64 GB",
-            "expandable_memory":"Yes Up to 256 GB",
-            "usb_otg_support":"Yes "
-         },
-         "camera":{
-            "settings":"Exposure compensation, ISO control",
-            "camera_features":"Digital Zoom, Auto Flash, Face detection, Touch to focus",
-            "image_resolution":"4616 x 3464 Pixels",
-            "sensor":"CMOS image sensor",
-            "autofocus":"Yes Phase Detection autofocus",
-            "shooting_modes":"Continuos Shooting, High Dynamic Range mode (HDR)",
-            "resolution":"8 MP Front Camera",
-            "physical_aperture":"F2.0",
-            "optical_image_stabilisation":"No",
-            "flash":"Yes LED Flash",
-            "video_recording":"1920x1080 @ 30 fps"
-         },
-         "battery":{
-            "user_replaceable":"No",
-            "standby_time":"Up to 647 Hours(3G)",
-            "talktime":"Up to 21 Hours(3G)",
-            "type":"Li-ion",
-            "capacity":"3340 mAh"
-         },
-         "network__connectivity":{
-            "wifi":"Yes Wi-Fi 802.11, b/g/n",
-            "wifi_features":"Wi-Fi Direct, Mobile Hotspot",
-            "bluetooth":"Yes v4.1",
-            "volte":"Yes ",
-            "usb_connectivity":"Mass storage device, USB charging, microUSB 2.0",
-            "sar_value":"Head: 1.23 W/kg",
-            "nfc":"No",
-            "network_support":"4G (supports Indian bands), 3G, 2G",
-            "gps":"Yes with A-GPS, Glonass",
-            "sim_1":"4G Bands:TD-LTE 2300(band 40) / 2500(band 41)  FD-LTE 2100(band 1) / 1800(band 3) / 850(band 5)3G Bands: UMTS 1900 / 2100 / 850 / 900 MHz2G Bands: GSM 1800 / 1900 / 850 / 900 MHz  GPRS:Available EDGE:Available ",
-            "sim_size":"SIM1: Nano, SIM2: Nano (Hybrid)",
-            "sim_2":"4G Bands: TD-LTE 2300(band 40) / 2500(band 41)  FD-LTE 2100(band 1) / 1800(band 3) / 850(band 5)3G Bands: UMTS 1900 / 2100 / 850 / 900 MHz 2G Bands: GSM 1800 / 1900 / 850 / 900 MHz  GPRS:Available EDGE:Available "
-         }
+      "redirect": false,
+      "redirectId": 0,
+      "specs": {
+        "key_specs": {
+          "display": "5.93 inches",
+          "front_camera": "8 MP",
+          "battery": "3340 mAh",
+          "processor": "HiSilicon Kirin 659",
+          "ram": "4 GB",
+          "rear_camera": "16 MP + 2 MP"
+        },
+        "special_features": {
+          "fingerprint_sensor_position": "Rear",
+          "other_sensors": "Light sensor, Proximity sensor, Accelerometer, Compass",
+          "fingerprint_sensor": "Yes "
+        },
+        "general": {
+          "quick_charging": "No",
+          "operating_system": "Android v7.0 (Nougat)",
+          "sim_slots": "Dual SIM, GSM+GSM",
+          "model": "7X 64GB",
+          "launch_date": "December 7, 2017 (Official)",
+          "custom_ui": "EMUI",
+          "brand": "Honor",
+          "sim_size": "SIM1: Nano SIM2: Nano (Hybrid)",
+          "network": "4G: Available (supports Indian bands)  3G: Available, 2G: Available",
+          "fingerprint_sensor": "Yes "
+        },
+        "multimedia": {
+          "loudspeaker": "Yes ",
+          "fm_radio": "Yes ",
+          "audio_jack": "3.5 mm"
+        },
+        "performance": {
+          "chipset": "HiSilicon Kirin 659",
+          "graphics": "Mali-T830 MP2",
+          "processor": "Octa core (2.36 GHz, Quad core, Cortex A53 + 1.7 GHz, Quad core, Cortex A53)",
+          "architecture": "64 bit",
+          "ram": "4 GB"
+        },
+        "design": {
+          "build_material": "Case: MetalBack: Metal",
+          "thickness": "7.6 mm",
+          "width": "75.3 mm",
+          "weight": "165 grams",
+          "height": "156.5 mm",
+          "colours": "Black, Blue, Gold"
+        },
+        "display": {
+          "display_type": "IPS LCD",
+          "aspect_ratio": "18:9",
+          "bezelless_display": "Yes ",
+          "pixel_density": "407 ppi",
+          "screen_protection": "Corning Gorilla Glass",
+          "screen_to_body_ratio_calculated": "77.01 %",
+          "screen_size": "5.93 inches (15.06 cm)",
+          "screen_resolution": "1080 x 2160 pixels",
+          "touch_screen": "Yes Capacitive Touchscreen, Multi-touch"
+        },
+        "storage": {
+          "user_available_storage": "Up to 48.3 GB",
+          "internal_memory": "64 GB",
+          "expandable_memory": "Yes Up to 256 GB",
+          "usb_otg_support": "Yes "
+        },
+        "camera": {
+          "settings": "Exposure compensation, ISO control",
+          "camera_features": "Digital Zoom, Auto Flash, Face detection, Touch to focus",
+          "image_resolution": "4616 x 3464 Pixels",
+          "sensor": "CMOS image sensor",
+          "autofocus": "Yes Phase Detection autofocus",
+          "shooting_modes": "Continuos Shooting, High Dynamic Range mode (HDR)",
+          "resolution": "8 MP Front Camera",
+          "physical_aperture": "F2.0",
+          "optical_image_stabilisation": "No",
+          "flash": "Yes LED Flash",
+          "video_recording": "1920x1080 @ 30 fps"
+        },
+        "battery": {
+          "user_replaceable": "No",
+          "standby_time": "Up to 647 Hours(3G)",
+          "talktime": "Up to 21 Hours(3G)",
+          "type": "Li-ion",
+          "capacity": "3340 mAh"
+        },
+        "network__connectivity": {
+          "wifi": "Yes Wi-Fi 802.11, b/g/n",
+          "wifi_features": "Wi-Fi Direct, Mobile Hotspot",
+          "bluetooth": "Yes v4.1",
+          "volte": "Yes ",
+          "usb_connectivity": "Mass storage device, USB charging, microUSB 2.0",
+          "sar_value": "Head: 1.23 W/kg",
+          "nfc": "No",
+          "network_support": "4G (supports Indian bands), 3G, 2G",
+          "gps": "Yes with A-GPS, Glonass",
+          "sim_1": "4G Bands:TD-LTE 2300(band 40) / 2500(band 41)  FD-LTE 2100(band 1) / 1800(band 3) / 850(band 5)3G Bands: UMTS 1900 / 2100 / 850 / 900 MHz2G Bands: GSM 1800 / 1900 / 850 / 900 MHz  GPRS:Available EDGE:Available ",
+          "sim_size": "SIM1: Nano, SIM2: Nano (Hybrid)",
+          "sim_2": "4G Bands: TD-LTE 2300(band 40) / 2500(band 41)  FD-LTE 2100(band 1) / 1800(band 3) / 850(band 5)3G Bands: UMTS 1900 / 2100 / 850 / 900 MHz 2G Bands: GSM 1800 / 1900 / 850 / 900 MHz  GPRS:Available EDGE:Available "
+        }
       }
     },
     {
+      "id": 2,
       "name": "Iphone SE",
       "brand": "Apple",
-      "mrp": 19999
+      "mrp": 19999,
+      "images": "https://www.apple.com/v/iphone-se/c/images/specs/hero__lyh4qk6u0dei_large.jpg",
+      "keyFeatures": {
+        "performance": "A13 Bionic chip Third‑generation Neural Engine",
+        "display": "4.7-inch (diagonal) widescreen LCD",
+        "storage": "64GB 128GB 256GB",
+        "camera": "12MP Wide camera",
+        "battery": "3340 mAh",
+        "ram": "4 GB"
+      }
     },
     {
+      "id": 3,
       "name": "Moto 8",
       "brand": "Motorolla",
-      "mrp": 9999
+      "mrp": 13999,
+      "images": "https://www.91-img.com/pictures/135750-v2-moto-g8-plus-mobile-phone-large-1.jpg?tr=q-60",
+      "keyFeatures": {
+        "performance": "Octa core (2 GHz, Quad Core + 1.8 GHz, Quad core) Snapdragon 665",
+        "display": "6.3 inches (16 cm)400 PPI, IPS LCD",
+        "storage": "64GB 128GB 256GB",
+        "camera": "48 MP + 16 MP + 5 MP Triple Primary CamerasLED Flash25 MP Front Camera",
+        "battery": "4000 mAhTurbo ChargingUSB Type-C Port",
+        "ram": "4 GB"
+      }
     },
     {
+      "id": 4,
       "name": "Poco 3",
       "brand": "Redmi",
-      "mrp": 8999
+      "mrp": "Rs. 6,999",
+      "images": "https://www.91-img.com/pictures/139183-v4-xiaomi-poco-c3-mobile-phone-large-1.jpg?tr=q-60",
+      "keyFeatures": {
+        "performance": "Octa Core, 2.3 GHzMediaTek Helio G35",
+        "display": "6.53 inches (16.59 cm)269 PPI, IPS LCD",
+        "storage": "32 GB + 512 GB Expandable",
+        "camera": "13 MP + 2 MP + 2 MP Triple Primary CamerasLED Flash5 MP Front Camera",
+        "battery": "5000 mAhMicro-USB PortNon-Removable",
+        "ram": "3 GB"
+      }
     },
     {
+      "id": 5,
       "name": "Realme c1",
       "brand": "Realme",
-      "mrp": 12999
+      "mrp": 12999,
+      "images": "https://www.91-img.com/pictures/130228-v4-realme-c1-mobile-phone-large-1.jpg?tr=q-60",
+      "keyFeatures": {
+        "performance": "Octa Core, 1.8 GHzSnapdragon 450",
+        "display": "4.7-inch (diagonal) widescreen LCD",
+        "storage": "16 GB + 256 GB Expandable",
+        "camera": "13 MP + 2 MP Dual Primary CamerasLED Flash5 MP Front Camera",
+        "battery": "4230 mAhMicro-USB PortNon-Removable",
+        "ram": "2 GB"
+      }
     },
     {
+      "id": 6,
       "name": "Redmi Note 9",
       "brand": "Redmi",
-      "mrp": 13999
+      "mrp": 8999,
+      "images": "https://www.91-img.com/pictures/136302-v8-xiaomi-redmi-9-mobile-phone-large-1.jpg?tr=q-60",
+      "keyFeatures": {
+        "performance": "Octa Core, 2.3 GHzMediaTek Helio G35",
+        "display": "6.53 inches (16.59 cm)269 PPI, IPS LCD",
+        "storage": "64 GB + 512 GB Expandable",
+        "camera": "13 MP + 2 MP Dual Primary CamerasLED Flash5 MP Front Camera",
+        "battery": "5000 mAhMicro-USB PortNon-Removable",
+        "ram": "4 GB"
+      }
     },
     {
+      "id": 7,
       "name": "Iphone 12",
       "brand": "Apple",
-      "mrp": 99999
+      "mrp": 77503,
+      "images": "https://www.91-img.com/pictures/136139-v4-apple-iphone-12-mobile-phone-large-1.jpg?tr=q-60",
+      "keyFeatures": {
+        "performance": "Hexa Core (3.1 GHz, Dual Core + 1.8 GHz, Quad core)Apple A14 Bionic",
+        "display": "6.1 inches (15.49 cm)457 PPI, OLED",
+        "storage": "64 GB, Non Expandable",
+        "camera": "12 MP + 12 MP Dual Primary CamerasDual LED Flash12 MP Front Camera",
+        "battery": "2815 mAhFast ChargingLightning Port",
+        "ram": "4 GB"
+      }
     }
   ]
 }

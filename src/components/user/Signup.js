@@ -7,9 +7,22 @@ class Signup extends Component {
         super(props)
         this.state = {
             firstName: '', lastName: '',  username: '', password: '', 
-            email: '', submitted: false, registering: false
+            email: '', submitted: false, registering: false,
+            loginStatus: false
         }
     }
+
+    componentDidMount() {
+        if(sessionStorage.getItem("userStatus")){
+            let user = JSON.parse(sessionStorage.getItem('userStatus'));
+            console.log(user.user[0])
+            this.setState({...user.user[0], loginStatus: true})
+        } else {
+            this.setState({loginStatus: false})
+        }
+        console.log(this.state)
+    }
+
 
     handleChange = (e) => {
         const { name, value } = e.target;
@@ -18,33 +31,56 @@ class Signup extends Component {
         })
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.setState({submitted : true});
-        fetch(`${API_BASE_ADDRESS}/users`, {...API_OPTION, body: JSON.stringify(this.state)}
+    insertUser = (event) => {
+        event.preventDefault();
+        let api = `${API_BASE_ADDRESS}/users`
+        fetch(api, {...API_OPTION, body: JSON.stringify(this.state)}
         ).then(response => response.json())
         .then(data => {
             alert("USer Added Successufully");
+            sessionStorage.setItem('userStatus', JSON.stringify(this.state))
             setTimeout(() => {
                 this.props.history.push('/login');
             }, 1000);
-          
         })
         .catch((error) => {
+            alert('error')
           console.log('Error:', error);
         });
+    }
+
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        this.setState({submitted : true});
+        if(this.state.loginStatus) {
+            await fetch(`${API_BASE_ADDRESS}/users/${this.state.id}`, { method: 'DELETE'}).then(
+                result => {
+                    if(result.status === 200) {
+                        this.insertUser(e);
+                    } else {
+                        alert('unable to remove the deatils to make the update on the previous details');
+                    }
+                }
+            ).catch((error) => {
+                alert('error')
+                console.log('Error:', error);
+            });
+        } else {
+            this.insertUser(e);
+        }
+        
     }
 
     render() {
         const user = this.state;
         const submitted = user.submitted;
         const registering = user.registering;
-
+        const title = user.loginStatus ? 'Edit Your Details' : 'Register your Details';
         return (
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-lg-8 offset-lg-2 mt-4">
-                    <h2>Register</h2>
+                    <h2>{ title }</h2>
                     <form name="form" onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label>First Name</label>
@@ -69,7 +105,7 @@ class Signup extends Component {
                         </div>
                         <div className="form-group">
                             <label>Email</label>
-                            <input type="email" name="email" value={user.email} onChange={this.handleChange} className={'form-control' + (submitted && !user.email ? ' is-invalid' : '')} />
+                            <input type="email" disabled = { this.state.loginStatus ? 'disabled' : '' }  name="email" value={user.email} onChange={this.handleChange} className={'form-control' + (submitted && !user.email ? ' is-invalid' : '')} />
                             {submitted && !user.email &&
                                 <div className="invalid-feedback">Email is required</div>
                             }

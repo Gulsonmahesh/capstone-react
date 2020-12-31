@@ -14,13 +14,13 @@ class Checkout extends Component {
   }
 
   getProductPricetotal = () => {
-    let productPrice = this.props.selectedProduct.map(product => product.price*product.count).reduce((a, b) => a + b, 0);
+    let productPrice = this.props.selectedProduct.map(product => parseInt(product.mrp)*product.count).reduce((a, b) => a + b, 0);
     this.setState({totalPrice : productPrice});
   }
 
   setpagevisibility = (displayType, scrollType) => {
     document.querySelector("#cartlistitem").style.display = displayType;
-    document.querySelector("html").style.overflow = scrollType;
+    // document.querySelector("#checkoutcontainer").style.overflow = scrollType;
     this.getProductPricetotal();
   }
 
@@ -52,7 +52,7 @@ class Checkout extends Component {
       } else {
         this.getProductPricetotal()
       }
-    }, 500);
+    }, 0);
   }
 
   closeModal = () => {
@@ -68,17 +68,17 @@ class Checkout extends Component {
               openModal ? <AlertModal gotologin={() => this.reRoutetoHome('/login')} loginStatus={this.state.notproceedtopayment} closeModal={this.closeModal} message= "Please login before proceed to Payment" />
               : (openModal === false ) ? <AlertModal loginStatus={this.state.notproceedtopayment} closeModal={this.closeModal} message= "Module yet to develop" /> : '' 
             }
-          <div className="container mt-5 pt-5">
+          <div id="checkoutcontainer" className="container mt-5 pt-5">
             <div className="row">
-              <div className="col-12 col-md-8 col-lg-8 p-2">
+              <div className="col-12 col-md-8 col-lg-8 p-2 order-2 order-md-1 order-lg-1" id="checkoutlist">
               { 
                 this.props.selectedProduct.length>0 && selectedProducts.map((product, index) => <div key={index} className="card mb-3" >
                 <div className="card-body">
-                  <h5 className="card-title">{product.title}</h5>
+                  <h5 className="card-title">{product.name}</h5>
                   <h6 className="card-subtitle mb-2 text-muted d-none">{product.count}</h6>
-                  <p className="card-text">Price : {product.price}</p>
+                  <p className="card-text">Price : Rs. {product.mrp}</p>
                   <div>
-                    <button type="button" className={"btn btn-secondary mr-2 " + (product.count === 1 ? "disabled " : "")}  onClick={() => this.countChange(product, 'decrease')}>-</button>
+                    <button disabled= {product.count === 1} type="button" className="btn btn-secondary mr-2" onClick={() => this.countChange(product, 'decrease')}>-</button>
                     <button type="button" className="btn btn-light mr-2 disabled">{product.count}</button>
                     <button type="button" className="btn btn-primary mr-4"  onClick={() => this.countChange(product, 'increase')}>+</button>
                     <button className="btn btn-danger" onClick={()=> this.removeProduct(product.id)}>Remove</button>
@@ -87,7 +87,7 @@ class Checkout extends Component {
               </div>)
               }
               </div>
-              <div className="col-12 col-md-4 col-lg-4 p-2">
+              <div className="col-12 col-md-4 col-lg-4 p-2 order-1 order-md-2 order-lg-2">
               <div className="card mb-3" >
                 <div className="card-header">Total Price</div>
                 <div className="card-body">
