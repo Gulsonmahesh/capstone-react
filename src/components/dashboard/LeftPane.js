@@ -6,7 +6,8 @@ export default class LeftPane extends Component {
     selectedPrice: '1000',
     options: [{ text: 'All', value: '0: All' }, { text: 'Apple', value: '1: Apple' },
     { text: 'Realme', value: '2: Realme' }, { text: 'Nokia', value: '3: Nokia' },
-    { text: 'Motorolla', value: '4: Motorolla' }, { text: 'Redmi', value: '5: Redmi' }],
+    { text: 'Motorolla', value: '4: Motorolla' }, { text: 'Redmi', value: '5: Redmi' },
+    { text: 'Honor', value: '6: Honor' }],
 
     price: [{ text: '0 - 1000', value: '1000' }, { text: '1000 - 2000', value: '2000' },
     { text: '2000 - 5000', value: '5000' }, { text: '5000 - 10000', value: '10000' }]

@@ -14,7 +14,7 @@ class ProductList extends Component {
             if (selectedBrand === 'All') {
                 productData = this.props.products;
             } else {
-                productData = this.props.products.filter(product => product.modal === selectedBrand);
+                productData = this.props.products.filter(product => product.brand === selectedBrand);
             }
         } else {
             productData = this.props.products;

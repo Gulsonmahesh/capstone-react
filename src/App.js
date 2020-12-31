@@ -23,7 +23,7 @@ class App extends Component {
           <Navbar loginStatus= {this.props.user.loginStatus} />
           <Switch>
             <Route exact path="/" component={Dashboard} />
-            <Route path="/productdetails/:id" component={lazy(() => import ('./components/product/ProductDetails'))} />
+            <Route path="/product/:name" component={lazy(() => import ('./components/product/ProductDetails'))} />
             <Route path= "/signup" component={ Signup } />
             <Route path= "/login" component={ Login }  />
             <Route path= "/checkout" component={ lazy(() => import ('./components/product/Checkout')) }  />

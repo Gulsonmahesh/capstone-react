@@ -7,7 +7,9 @@ class RightPane extends Component {
         return (
         <Fragment>
             <div className="container">
-                <ProductList products={this.props.product} filterProduct = {this.props.filter} />
+                {
+                    (this.props.product.length) && <ProductList products={this.props.product} filterProduct = {this.props.filter} />
+                }
             </div>
         </Fragment>
         )

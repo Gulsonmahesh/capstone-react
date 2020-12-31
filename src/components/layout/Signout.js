@@ -30,10 +30,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
-    return {
-        // userDetails : state.
-    }
+    return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signout)

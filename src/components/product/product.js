@@ -1,14 +1,18 @@
 import React, { Fragment }  from 'react';
-import Image from "./sample-1.jpg";
 import { useDispatch } from 'react-redux';
+import { useHistory } from "react-router";
 import { addtocart } from '../../store/actions/productAction';
+
+// import Image from "./sample-1.jpg";
 
 const Product = ({productData}) => {
     const disp = useDispatch();
-
+    const history = useHistory();
+    
     const openProduct = (product) => {
-        alert(product.title);
+        history.push({pathname: `/product/${product.name}`, params: 'test'});
     }
+
     function addtoCart(selectedProduct) {
         let alreadyExist = 0;
         if(sessionStorage.getItem('productsincart')) {
@@ -37,12 +41,11 @@ const Product = ({productData}) => {
                     productList.map((productRow, index) => <div className="row mb-3" key= {index}>{
                         productRow.map((product) => {
                             return (
-                                <div className="col-4" key ={product.id}>
+                                <div className="col-4" key ={product.name}>
                                     <div className="card">
-                                        <img className="card-img-top" src={Image} alt="Card cap" onClick={() => openProduct(product)} />
+                                        <img className="card-img-top" src={product.images} alt={product.name} onClick={() => openProduct(product)} />
                                         <div className="card-body">
-                                        <h5 className="card-title">{product.title}</h5>
-                                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <h5 className="card-title">{product.name}</h5>                                        
                                         </div>
                                         <div className="card-footer">
                                             <button className="addtocart" onClick={() => addtoCart(product)}>ADD TO CART</button>
