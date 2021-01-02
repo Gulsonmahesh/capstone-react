@@ -2,8 +2,7 @@ import React from 'react'
 import SignIn from './SignIn';
 import SignOut from './Signout';
 import './Navbar.css';
-import { Navbar, NavbarBrand, NavItem } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Navbar, NavbarBrand } from 'react-bootstrap';
 
 export default function NavBar() {
     let userDetails = {loginStatus : false};

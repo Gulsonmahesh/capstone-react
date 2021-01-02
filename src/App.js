@@ -29,6 +29,7 @@ class App extends Component {
             <Route exact path="/" component={Dashboard} />
             <Route path="/product/:name" component={lazy(() => import ('./components/product/ProductDetails'))} />
             <Route path="/addproduct" component={lazy(() => import ('./components/product/Addproduct'))} />
+            <Route path="/editproduct/:id" component={lazy(() => import ('./components/product/Addproduct'))} />
             <Route path="/Summary" component={lazy(() => import ('./components/product/Summery'))} />
             <Route path= "/signup" component={ Signup } />
             <Route path= "/login" component={ Login }  />

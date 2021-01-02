@@ -42,7 +42,7 @@ const Product = ({productData}) => {
                             return (
                                 <div className="col-sm-12 col-md-4 col-lg-4 p-1" key ={product.name}>
                                     <Card className="border-0 w-100 mb-2 mb-md-0 mb-lg-0">
-                                        <Card.Img variant='top' className="mt-3" src={product.images} alt={product.name} onClick={() => openProduct(product)} />
+                                        <Card.Img variant='top' className="mt-1" src={product.images} alt={product.name} onClick={() => openProduct(product)} />
                                         <Card.Body className="mb-1 mb-md-0 mb-lg-0 p-1">
                                             <h6 className="card-title text-center" onClick={() => openProduct(product)} >{product.name}</h6>                                            
                                         </Card.Body>

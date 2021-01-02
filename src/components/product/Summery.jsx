@@ -9,6 +9,7 @@ import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 import { API_BASE_ADDRESS } from '../../utilities/constants';
+import { Link }from 'react-router-dom'
 
 class Productsummary extends Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class Productsummary extends Component {
         this.props.initProducts();
         let userDetails = {loginStatus : false};
         if(sessionStorage.getItem('userStatus')) {
-            userDetails = JSON.parse(sessionStorage.getItem('userStatus'));
+            userDetails = JSON.parse(sessionStorage.getItem('userStatus')).user[0];
             this.setState({userStatus : userDetails.admin})
         }
         document.querySelector('html').style.overflow = 'auto';
@@ -41,15 +42,14 @@ class Productsummary extends Component {
                 if(result.status === 200) {
                     this.props.initProducts();
                 } else {
-                    alert('unable to remove the deatils to make the update on the previous details');
+                    alert('unable to remove the details to make the update on the previous details');
                 }
             }).catch(error => {
                 console.log('Error', error);
             });
         } else {
-            
+            this.props.history.push(`/editproduct/${this.state.selectedId}`)
         }
-        
     }
     handleChange = (e) => {
         setTimeout(() => {
@@ -113,7 +113,7 @@ class Productsummary extends Component {
                                         this.props.products && this.props.products.length!==0 && this.props.products.map((singleProduct) => {
                                             return <tr key={singleProduct.id}>
                                                 <td>{singleProduct.id}</td>
-                                                <td>{singleProduct.name}</td>
+                                                <td><Link to={`/product/${singleProduct.name}`}>{singleProduct.name}</Link></td>
                                                 <td>{singleProduct.brand}</td>
                                                 <td>{singleProduct.mrp}</td>
                                                 <td>{singleProduct.ram}</td>

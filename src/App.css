@@ -24,7 +24,7 @@ li {
 @media (max-width: 480px)
 {   
     #rightcontainer .row:last-child .col-sm-12:last-child {
-        margin-bottom: 250px !important;
+        /* margin-bottom: 250px !important; */
     }
     #logincontainer {
         height: 81vh;

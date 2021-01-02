@@ -4,6 +4,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom';
 import { API_BASE_ADDRESS, API_OPTION } from '../../utilities/constants';
+import { connect } from 'react-redux';
+import { initProducts } from '../../store/actions/productAction'
 
 class Addproduct extends Component {
     constructor(props) {
@@ -14,13 +16,22 @@ class Addproduct extends Component {
             submitted: false, registering: false
         }
     }
+
     componentDidMount() {
         document.querySelector('html').style.overflow = 'auto';
+        if(this.props.match.params.id) {
+            setTimeout(() => {
+                if (this.props.product !== null) {
+                    let selectedProduct = this.props.product.filter( product => product.id === parseInt(this.props.match.params.id))
+                    this.setState({...selectedProduct[0]});
+                }
+            }, 1000);
+        }
+        
     }
 
-    clearform = (e) => {
-        e.preventDefault();
-        this.setSate({
+    clearform = () => {
+        this.setState({
             name: '', brand: '', mrp: '' , images: '', performance: '',
             display: '', storage: '', camera: '', battery: '', ram: '',
             submitted: false, registering: false
@@ -32,7 +43,28 @@ class Addproduct extends Component {
             [name] : value
         })
     }
-
+    insertProduct = async () => {
+        await fetch(`${API_BASE_ADDRESS}/modals`,{...API_OPTION, body: JSON.stringify(this.state)}).then(result => {
+            if(result.status === 200 || result.status === 201) {
+                alert(
+                    this.props.match.params.id  !== '' 
+                    ? 'Product Updated'
+                    : 'Product Added'
+                );
+                this.clearform();
+                this.props.initProducts()
+                
+            } else {
+                alert(
+                    this.props.match.params.id  
+                    ? 'unable to Edit the details pf the selected product'
+                    : 'unable to Add the details pf the selected product'
+                );
+            }
+        }).catch((error) => {
+            console.log('Error:', error);
+        });
+    }
     handleSubmit = async (e) => {
         e.preventDefault();
         this.setState({submitted: true});
@@ -44,16 +76,22 @@ class Addproduct extends Component {
         || this.state.ram === '') {
             alert('All Details are mandatory');
         } else {
-            await fetch(`${API_BASE_ADDRESS}/modals`,{...API_OPTION, body: JSON.stringify(this.state)}).then(res => res.json).then(result => {
-                if(result.state === 200 || result.state === 201) {
-                    alert('Product Added');
-                    this.clearform();
-                } else {
-                    alert('unable to add the deatils to make the update on the previous details');
-                }
-            }).catch((error) => {
-                console.log('Error:', error);
-            });
+            if(this.props.match.params.id) {
+                await fetch(`${API_BASE_ADDRESS}/modals/${this.state.id}`, { method: 'DELETE'}).then(
+                    result => {
+                        if(result.status === 200) {
+                            this.insertProduct();
+                        } else {
+                            alert('unable to update the deatils of the product');
+                        }
+                    }
+                ).catch((error) => {
+                    alert('error')
+                    console.log('Error:', error);
+                });
+            } else {
+                this.insertProduct();
+            }
         }
     }
     
@@ -61,6 +99,8 @@ class Addproduct extends Component {
         const producttoadd = this.state;
         const submitted = producttoadd.submitted;
         const registering = producttoadd.registering;
+        const buttonTitle = this.props.match.params.id ? 'Update' : 'Save';
+
         return (
             <Fragment>
                 <Container fluid className="p-5">
@@ -119,8 +159,8 @@ class Addproduct extends Component {
                             </div>
                             <div className="form-group">
                                 <button className="btn btn-primary">
-                                    {registering && <span className="spinner-border spinner-border-sm mr-1"></span>}
-                                    Save
+                                    {registering && <span className="spinner-border spinner-border-sm mr-1"></span>}                                    
+                                    {buttonTitle}
                                 </button>
                                 <Link to="/" className="btn btn-link ml-5">Cancel</Link>
                             </div>
@@ -132,5 +172,22 @@ class Addproduct extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    if(state.product.products !==null && state.product.products.length){
+        return {
+            product: state.product.products
+        }
+    } else {
+        return {
+            product: null
+        }
+    }
+    
+}
 
-export default Addproduct;
+const mapPropsToDispatch = (dispatch) => {
+    return {
+        initProducts : () => dispatch(initProducts())
+    }
+}
+export default connect(mapStateToProps, mapPropsToDispatch)(Addproduct);

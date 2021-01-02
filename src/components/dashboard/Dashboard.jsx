@@ -18,7 +18,7 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div className="p-0 m-2" id="dashboard">
+            <div className="p-0 m-0" id="dashboard">
                 <div className="leftpane">
                     <LeftPane onChangeFilter = {filterValue => this.updateFilter(filterValue)} />
                 </div>
@@ -30,7 +30,7 @@ class Dashboard extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         products: state.product.products
     }

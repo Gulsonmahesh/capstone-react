@@ -39,7 +39,7 @@ const Signout = (props) => {
                 <li><Link to="/" onClick={(event) => logout(event)} >Sign Out</Link></li>
                 <li><span data-target="dropdown1" className="btn btn-small d-none d-lg-block d-md-block">{avatar}</span></li>
                 <li><Link to="/" onClick={(event) => editProfile(event)} >Edit Details</Link></li>
-                { userType && <li><Link to="/addproduct">Add Product</Link></li> }                
+                {/* { userType && <li><Link to="/addproduct">Add Product</Link></li> } */}
 
             </ul>
         </Fragment>
