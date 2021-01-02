@@ -15,14 +15,11 @@ class Signup extends Component {
     componentDidMount() {
         if(sessionStorage.getItem("userStatus")){
             let user = JSON.parse(sessionStorage.getItem('userStatus'));
-            console.log(user.user[0])
             this.setState({...user.user[0], loginStatus: true})
         } else {
             this.setState({loginStatus: false})
         }
-        console.log(this.state)
     }
-
 
     handleChange = (e) => {
         const { name, value } = e.target;
@@ -81,7 +78,7 @@ class Signup extends Component {
                 <div className="row">
                     <div className="col-lg-8 offset-lg-2 mt-4">
                     <h2>{ title }</h2>
-                    <form name="form" onSubmit={this.handleSubmit}>
+                    <form name="adduser" onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label>First Name</label>
                             <input type="text" name="firstName" value={user.firstName} onChange={this.handleChange} className={'form-control' + (submitted && !user.firstName ? ' is-invalid' : '')} />

@@ -1,16 +1,10 @@
 import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux';
 
-export default class LeftPane extends Component {
+class LeftPane extends Component {
   state = {
     selectedBrand: 'All',
-    selectedPrice: '1000',
-    options: [
-      { text: 'All'}, { text: 'Apple'},{ text: 'Realme',}, { text: 'Nokia'},
-      { text: 'Motorolla', value: '4: Motorolla' }, { text: 'Redmi'},{ text: 'Honor'}
-    ],
-    price: [
-      { text: '0 - 1000', value: '1000' }, { text: '1000 - 2000', value: '2000' },
-      { text: '2000 - 5000', value: '5000' }, { text: '5000 - 10000', value: '10000' }]
+    selectedPrice: '1000'
   };
   changeHandler = (evt) => {
     this.setState(function () {
@@ -35,7 +29,7 @@ export default class LeftPane extends Component {
               <label htmlFor="selectedBrand">By Brands:</label>
               <select name="selectedBrand" id="selectedBrand" style={{width : '98%'}} className="form-control ng-untouched ng-pristine ng-valid" value={this.state.selectedBrand} onChange={this.changeHandler}>
                 {
-                  this.state.options.map(option => <option value={option.text} key={option.text} className="ng-star-inserted">{option.text}</option>)
+                  this.props.filter.map(option => <option value={option} key={option} className="ng-star-inserted">{option}</option>)
                 }
               </select>
               </div>
@@ -55,4 +49,10 @@ export default class LeftPane extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    filter: state.filter
+  }
+}
 
+export default connect(mapStateToProps)(LeftPane)

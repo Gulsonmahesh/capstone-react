@@ -1,4 +1,5 @@
 {
+  "filterdata" : ["All","Apple", "Realme", "Nokia", "Motorolla","Redmi","Honor"],
   "users": [
     {
       "firstName": "Priya",
@@ -21,7 +22,7 @@
       "registering": false,
       "loginStatus": true,
       "id": 1,
-      "ädmin": true
+      "admin": true
     }
   ],
   "modals": [
@@ -115,9 +116,20 @@
       "camera": "12 MP + 12 MP Dual Primary CamerasDual LED Flash12 MP Front Camera",
       "battery": "2815 mAhFast ChargingLightning Port",
       "ram": "4 GB"
+    },
+    {
+      "name": "Redmi Note 9 Pro Max",
+      "brand": "Redmi",
+      "mrp": "15999",
+      "images": "https://www.91-img.com/pictures/138034-v6-xiaomi-redmi-note-9-pro-max-mobile-phone-large-1.jpg?tr=q-60",
+      "performance": "Octa core (2.3 GHz, Dual Core + 1.8 GHz, Hexa Core) Snapdragon 720G",
+      "display": "6.67 inches (16.94 cm) 395 PPI, IPS LCD 60 Hz Refresh Rate",
+      "storage": "64 GB + 512 GB Expandable",
+      "camera": "64 + 8 + 5 + 2 MP Quad Primary Cameras LED Flash 32 MP Front Camera",
+      "battery": "5020 mAhFast Charging USB Type-C Port",
+      "ram": "6 GB",
+      "id": 8
     }
   ],
-  "productsviewed": [
-
-  ]
+  "productsviewed": []
 }

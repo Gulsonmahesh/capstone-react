@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom';
 import { API_BASE_ADDRESS, API_OPTION } from '../../utilities/constants';
 
@@ -15,29 +14,47 @@ class Addproduct extends Component {
             submitted: false, registering: false
         }
     }
-    
-    handleChange = (e) => {
-        console.log('test');
+    componentDidMount() {
+        document.querySelector('html').style.overflow = 'auto';
+    }
+
+    clearform = (e) => {
+        e.preventDefault();
+        this.setSate({
+            name: '', brand: '', mrp: '' , images: '', performance: '',
+            display: '', storage: '', camera: '', battery: '', ram: '',
+            submitted: false, registering: false
+        });
+    }
+    handleChange = (e) => {;
         const { name, value } = e.target;
         this.setState({
             [name] : value
         })
-        console.log(this.state)
     }
 
-    saveProduct = async (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
         this.setState({submitted: true});
-        await fetch(`${API_BASE_ADDRESS}/modals`,{...API_OPTION, body: JSON.stringify(this.state)}).then(res => res.json).then(result => {
-            if(result.state === 200) {
-                alert('Product Added');
-            } else {
-                alert('unable to remove the deatils to make the update on the previous details');
-            }
-        }).catch((error) => {
-                alert('error')
+        delete(this.state.registering);
+        delete(this.state.submitted);
+        if(this.state.name === '' || this.state.brand === '' || this.state.mrp === '' || 
+        this.state.images === '' || this.state.performance === '' || this.state.display === '' || 
+        this.state.storage === '' || this.state.camera === '' || this.state.battery === '' 
+        || this.state.ram === '') {
+            alert('All Details are mandatory');
+        } else {
+            await fetch(`${API_BASE_ADDRESS}/modals`,{...API_OPTION, body: JSON.stringify(this.state)}).then(res => res.json).then(result => {
+                if(result.state === 200 || result.state === 201) {
+                    alert('Product Added');
+                    this.clearform();
+                } else {
+                    alert('unable to add the deatils to make the update on the previous details');
+                }
+            }).catch((error) => {
                 console.log('Error:', error);
-        });
+            });
+        }
     }
     
     render () {
@@ -46,10 +63,10 @@ class Addproduct extends Component {
         const registering = producttoadd.registering;
         return (
             <Fragment>
-                <Container fluid className="mt-5 p-5">
+                <Container fluid className="p-5">
                     <Row>
                         <Col>
-                            <form name="form" onSubmit={this.saveProduct}>
+                            <form name="addproduct" onSubmit={this.handleSubmit}>
                             <div className="form-group">
                                 <label>Product Name</label>
                                 <input type="text" name="name" value={producttoadd.name} onChange={this.handleChange} className={'form-control' + (submitted && !producttoadd.name ? ' is-invalid' : '')} />
@@ -62,12 +79,12 @@ class Addproduct extends Component {
                             </div>
                             <div className="form-group">
                                 <label>MRP</label>
-                                <input type="text" name="mrp" value={producttoadd.mrp} onChange={this.handleChange} className={'form-control' + (submitted && !producttoadd.mrp ? ' is-invalid' : '')} />
+                                <input type="text" name="mrp" value={producttoadd.mrp} placeholder="Please Enter Number only" onChange={this.handleChange} className={'form-control' + (submitted && !producttoadd.mrp ? ' is-invalid' : '')} />
                                 { submitted && !producttoadd.mrp && <div className="invalid-feedback">MRP is required</div> }
                             </div>
                             <div className="form-group">
                                 <label>Modal Photo Path</label>
-                                <input type="text" name="images" value={producttoadd.images} onChange={this.handleChange} className={'form-control' + (submitted && !producttoadd.images ? ' is-invalid' : '')} />
+                                <input type="text" name="images" value={producttoadd.images} placeholder="Please enter a valid path" onChange={this.handleChange} className={'form-control' + (submitted && !producttoadd.images ? ' is-invalid' : '')} />
                                 { submitted && !producttoadd.images && <div className="invalid-feedback">Modal Image is required</div> }
                             </div>
                             <div className="form-group">
@@ -101,10 +118,10 @@ class Addproduct extends Component {
                                 { submitted && !producttoadd.ram && <div className="invalid-feedback">Ram is required</div> }
                             </div>
                             <div className="form-group">
-                                <Button variant="primary">
+                                <button className="btn btn-primary">
                                     {registering && <span className="spinner-border spinner-border-sm mr-1"></span>}
-                                    Register
-                                </Button>
+                                    Save
+                                </button>
                                 <Link to="/" className="btn btn-link ml-5">Cancel</Link>
                             </div>
                             </form>

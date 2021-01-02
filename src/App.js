@@ -6,8 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import ErrorWrapper from './wrapper/ErrorWrapper';
-import Navbar from './components/layout/Navbar';
+import NavBar from './components/layout/Navbar';
 import { initProducts } from './store/actions/productAction';
+import { initFilter } from './store/actions/filterAction'
 import Dashboard from './components/dashboard/Dashboard';
 // import Footer from './components/layout/Footer';
 import Login from './components/user/Login';
@@ -15,6 +16,7 @@ import Signup from './components/user/Signup';
 
 class App extends Component {
   componentDidMount(){
+    this.props.initFilter();
     this.props.initProducts();
   }
   render() {
@@ -22,7 +24,7 @@ class App extends Component {
       <ErrorWrapper>
         <Router>
           <Suspense fallback="Loading">
-          <Navbar loginStatus= {this.props.user.loginStatus} />
+          <NavBar loginStatus= {this.props.user.loginStatus} />
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/product/:name" component={lazy(() => import ('./components/product/ProductDetails'))} />
@@ -41,7 +43,8 @@ class App extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    initProducts: () => dispatch(initProducts())
+    initProducts: () => dispatch(initProducts()),
+    initFilter: () => dispatch(initFilter())
   }
 }
 

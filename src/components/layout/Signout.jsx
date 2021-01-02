@@ -7,17 +7,20 @@ import { useHistory } from 'react-router';
 
 const Signout = (props) => {
     const [avatar, setAvatar] = useState('');
-     const histroy = useHistory();
+    const [userType, setUserType] = useState(false)
+    const histroy = useHistory();    
 
     useEffect(()=> {
         if(sessionStorage.getItem('userStatus')) {
             let userStatus = JSON.parse(sessionStorage.getItem('userStatus'));
             setAvatar(userStatus.user[0].firstName[0]+userStatus.user[0].lastName[0]);
+            setUserType(userStatus.user[0].admin)
         } else {
             setAvatar('');
+            setUserType(false)
         }
     },[])
-    
+
     const logout = (event) => {
         event.preventDefault();
         props.logOut();
@@ -32,10 +35,11 @@ const Signout = (props) => {
         <Fragment>
             <ul className="navbar-nav ml-auto flex-row mr-3 align-center">
                 <Cart />
+                <li className="mr-3"><Link to="/Summary">Summary</Link></li>
                 <li><Link to="/" onClick={(event) => logout(event)} >Sign Out</Link></li>
                 <li><span data-target="dropdown1" className="btn btn-small d-none d-lg-block d-md-block">{avatar}</span></li>
                 <li><Link to="/" onClick={(event) => editProfile(event)} >Edit Details</Link></li>
-                { props.userType && <li><Link to="/addproduct">Add Product</Link></li>}
+                { userType && <li><Link to="/addproduct">Add Product</Link></li> }                
 
             </ul>
         </Fragment>
@@ -48,14 +52,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const mapStateToProps = (state) => {
-    if(state) {
-        return {
-            userType : state.auth.user.user[0].ädmin
-        }
-    } 
-    return {
-        userType : false
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Signout)
+export default connect(null, mapDispatchToProps)(Signout)

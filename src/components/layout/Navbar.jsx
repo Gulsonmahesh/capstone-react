@@ -2,18 +2,20 @@ import React from 'react'
 import SignIn from './SignIn';
 import SignOut from './Signout';
 import './Navbar.css';
+import { Navbar, NavbarBrand, NavItem } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-export default function Navbar(props) {
+export default function NavBar() {
     let userDetails = {loginStatus : false};
     if(sessionStorage.getItem('userStatus')) {
         userDetails = JSON.parse(sessionStorage.getItem('userStatus'));
     }
     return (
         <div className = "container-fluid p-0">
-            <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-primary">
-                <a href="/" className="navbar-brand mx-lg-3 mx-0 d-block d-lg-block d-md-block">Shoppify</a>
+            <Navbar color="light" expand="lg"  className="bg-primary">
+                <NavbarBrand href="/" className="mx-lg-3 mx-0 d-block d-lg-block d-md-block">Shoppify</NavbarBrand>
                 { (userDetails.loginStatus) ? <SignOut /> :  <SignIn /> }
-            </nav>
+            </Navbar>
         </div>
     )
 }
