@@ -25,6 +25,9 @@ class Productsummary extends Component {
         this.setState({ modifyStatus: !this.state.modifyStatus })
     }
 
+    handleSubmit = (e) => {
+        
+    }
     render() {
         return (
             <Fragment>
@@ -45,13 +48,13 @@ class Productsummary extends Component {
                     {
                         this.state.modifyStatus && <Row className="mt-2" >
                         <Col>
-                            <Form>
+                            <Form onSubmit={this.handleSubmit}>
                                 <Form.Row className="align-items-center">
                                     <Col xs="auto">
                                         <Form.Label className="d-inline-block" htmlFor="inlineFormInput">Enter Id of the product</Form.Label>
                                     </Col>
                                     <Col xs="auto">
-                                        <Form.Control className="mb-2" id="inlineFormInput" placeholder="Jane Doe"/>
+                                        <Form.Control className="mb-2" id="inlineFormInput" placeholder="id listed below"/>
                                     </Col>
                                     <Col xs="auto">
                                         <Button type="submit" className="mb-2"> Submit</Button>
