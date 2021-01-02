@@ -1,9 +1,10 @@
-import React, { Fragment }  from 'react';
+import React, { Fragment, useEffect }  from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router";
 import { addtocart } from '../../store/actions/productAction';
-
-// import Image from "./sample-1.jpg";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card'
+import { checkDuplicate } from '../../utilities/commonfunctions';
 
 const Product = ({productData}) => {
     const disp = useDispatch();
@@ -12,13 +13,11 @@ const Product = ({productData}) => {
     const openProduct = (product) => {
         history.push({pathname: `/product/${product.name}`});
     }
-
+    useEffect(() => {
+        document.querySelector('html').style.overflow = 'hidden !important';
+    },[])
     function addtoCart(selectedProduct) {
-        let alreadyExist = 0;
-        if(sessionStorage.getItem('productsincart')) {
-            alreadyExist =   (JSON.parse(sessionStorage.getItem('productsincart')).filter(product => product.id === selectedProduct.id)).length;
-        }
-        if (alreadyExist) {
+        if(checkDuplicate(selectedProduct.id)) {
             alert('Product already Exist in the cart')
             return false;
         }
@@ -38,19 +37,19 @@ const Product = ({productData}) => {
         return (
             <Fragment>
                 {
-                    productList.map((productRow, index) => <div className="row mb-3" key= {index}>{
+                    productList.map((productRow, index) => <div className="row mb-2 mr-2 ml-0" key= {index}>{
                         productRow.map((product) => {
                             return (
-                                <div className="col-sm-12 col-md-4 col-lg-4" key ={product.name}>
-                                    <div className="card"  style={{height: '400px', width: "225px"}}>
-                                        <img className="card-img-top mt-3" src={product.images} alt={product.name} onClick={() => openProduct(product)} />
-                                        <div className="card-body d-flex justify-content-center">
-                                            <h5 className="card-title" onClick={() => openProduct(product)} >{product.name}</h5>                                        
-                                        </div>
-                                        <div className="card-footer d-flex justify-content-center">
-                                            <button className="addtocart" onClick={() => addtoCart(product)}>ADD TO CART</button>
-                                        </div>
-                                    </div>
+                                <div className="col-sm-12 col-md-4 col-lg-4 p-1" key ={product.name}>
+                                    <Card className="border-0 w-100 mb-2 mb-md-0 mb-lg-0">
+                                        <Card.Img variant='top' className="mt-3" src={product.images} alt={product.name} onClick={() => openProduct(product)} />
+                                        <Card.Body className="mb-1 mb-md-0 mb-lg-0 p-1">
+                                            <h6 className="card-title text-center" onClick={() => openProduct(product)} >{product.name}</h6>                                            
+                                        </Card.Body>
+                                        <Card.Footer className="d-flex justify-content-center border-0">
+                                            <Button size="sm" varient="primary" className="addtocart" onClick={() => addtoCart(product)}>Add To Cart</Button>
+                                        </Card.Footer>
+                                    </Card>
                                 </div>
                             )
                         })

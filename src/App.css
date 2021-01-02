@@ -22,19 +22,21 @@ li {
 }
 
 @media (max-width: 480px)
-{
+{   
+    #rightcontainer .row:last-child .col-sm-12:last-child {
+        margin-bottom: 250px !important;
+    }
     #logincontainer {
         height: 81vh;
     }
     #checkoutlist {
-        height:auto !important;
         overflow: auto;
+        order: 1;
     }
 }
 
-
-.card-img-top {
-    height: 250px;
+Button:not(:last-child) {
+    margin-right: 1em;
 }
 
 #checkoutlist {

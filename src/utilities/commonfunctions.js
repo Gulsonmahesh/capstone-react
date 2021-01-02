@@ -8,3 +8,11 @@ export function arraySplit(arrayData, splitValue) {
     return resultArray
     }, []);
 }
+
+export const checkDuplicate = (id) => {
+    let alreadyExist = 0;
+    if(sessionStorage.getItem('productsincart')) {
+        alreadyExist =   parseInt((JSON.parse(sessionStorage.getItem('productsincart')).filter(product => product.id === id)).length);
+    }
+    return alreadyExist;
+}

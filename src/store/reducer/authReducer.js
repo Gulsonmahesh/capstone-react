@@ -1,7 +1,7 @@
 let initAuthState = {
     loginStatus: false,
     authError: null,
-    user: null
+    user: (sessionStorage.getItem('userStatus')) ? JSON.parse(sessionStorage.getItem('userStatus')) : null
 };
 
 const userDetails =  JSON.parse(sessionStorage.getItem('userStatus'));

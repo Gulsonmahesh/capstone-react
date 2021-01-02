@@ -1,0 +1,110 @@
+import React, { Component, Fragment } from 'react'
+import { API_BASE_ADDRESS } from '../../utilities/constants'
+import { connect } from 'react-redux';
+import { addtocart } from '../../store/actions/productAction';
+import Button from 'react-bootstrap/Button';
+import { checkDuplicate } from '../../utilities/commonfunctions';
+
+class ProductDetails extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {"viewproduct": this.props.location.pathname.split('/').pop(),
+        productDetails: null};
+    }
+    componentDidMount() {
+        document.querySelector('html').style.overflow = 'auto';
+        fetch(`${API_BASE_ADDRESS}/modals?name=${this.state.viewproduct}`).then(res => res.json()).then (
+            result =>  {
+                this.setState({productDetails : result[0]})
+            }
+        ).catch(err=> {
+            alert("Unable to retrieve data");
+        })
+    }
+    
+    addtocart = (id) => {
+        let productSelected = this.state.productDetails;
+         if(checkDuplicate(id)) {
+            alert('Product already Exist in the cart')
+            return false;
+        }
+        const producttoadd = {brand: productSelected.brand, mrp: productSelected.mrp, name: productSelected.name, count:1}
+        this.props.addtocart(producttoadd);
+    }
+
+    backToaction = (path) => {
+        this.props.history.push(`${path}`);
+    }
+
+    render() {
+        const productData = this.state.productDetails;
+        return (
+            <Fragment>
+                {
+                    productData !== null && 
+                    <div className = "container-fluid p-2 mt-5">
+                    <div className="row m-1 p-2">
+                        <div className="col-md-6 col-lg-4 col-sm-5">
+                            <img className="mb-3" src={productData.images} alt={productData.name} />
+                        </div>
+                        <div className="col-md-6 col-lg-6 col-sm-7 p-2">
+                            <h2 className="mb-1">{productData.name}</h2>
+                            <h3 className="mb-1">Price : {productData.mrp}</h3>
+                            <h4 className="mb-1 text-muted">Highlights</h4>
+                            <div className="p-0 mb-2">
+                                <div className="row">
+                                    <div className="col-4">Performance: </div>
+                                    <div className="col">{productData.keyFeatures.performance}</div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-4">Display: </div>
+                                    <div className="col">{productData.keyFeatures.display}</div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-4">Storage: </div>
+                                    <div className="col">{productData.keyFeatures.storage}</div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-4">Camera: </div>
+                                    <div className="col">{productData.keyFeatures.camera}</div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-4">Battery: </div>
+                                    <div className="col">{productData.keyFeatures.battery}</div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-4">Ram: </div>
+                                    <div className="col">{productData.keyFeatures.ram}</div>
+                                </div>
+                                <div className="row">
+                                <div className="col-lg-9 col-md-12 col-sm-12">
+                                <div className="d-flex align-items-center justify-content-between my-3" id="cartActions">
+                                    <Button variant="primary" className="text-center" onClick={() => this.addtocart(productData.id)}>Add to Cart</Button>
+                                    <Button variant="secondary" className="text-center" onClick={() => this.backToaction('/')}>Back to shopping</Button>
+                                    {this.props.productsIncart && <Button variant="light" onClick={() => this.backToaction('/checkout')}>Back to Cart</Button> }
+                                </div>
+                                </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+                }
+            </Fragment>
+        )
+    }
+}
+
+const mapDisptachToProps = (dispatch) => {
+    return {
+        addtocart : (product) => dispatch(addtocart(product))
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        productsIncart: state.product.productsincart.length ? true : false
+    }
+}
+
+export default connect(mapStateToProps, mapDisptachToProps)(ProductDetails);

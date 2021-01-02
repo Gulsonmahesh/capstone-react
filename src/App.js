@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import Navbar from './components/layout/Navbar';
 import {lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+
+import ErrorWrapper from './wrapper/ErrorWrapper';
+import Navbar from './components/layout/Navbar';
 import { initProducts } from './store/actions/productAction';
 import Dashboard from './components/dashboard/Dashboard';
 // import Footer from './components/layout/Footer';
-import ErrorWrapper from './wrapper/ErrorWrapper';
 import Login from './components/user/Login';
 import Signup from './components/user/Signup';
-import './App.css';
 
 class App extends Component {
   componentDidMount(){

@@ -1,17 +1,17 @@
-import React from 'react';
+import React, {StrictMode} from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux'
 import store from './store/createStore';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <Provider store = {store}>
       <App />
     </Provider>
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('root')
 );
 

@@ -25,6 +25,9 @@ label {
 }
 
 @media (max-width: 480px) {
+    #rightcontainer {
+        max-height: 800px;
+    }
     #dashboard {
         /* grid-template-columns: 100%;
         grid-template-areas: "sidebar";
@@ -38,24 +41,27 @@ label {
     }
 
     #dashboard .rightpane {
-        grid-template-columns: 100%;
+        /* grid-template-columns: 100%;
         grid-template-areas: "mainbar";                            
         justify-self: start;
         grid-template-rows: 100%;
         row-gap: 10px;
         min-height: 64vh;
-        height: auto;
+        height: auto; */
+    }
+    #checkoutlist .card:last-child {
+        margin-bottom: 100px !important;
     }
 }
 
 @media (max-width: 768px) {
     #dashboard {
-        grid-template-rows: 88vh;
+        /* grid-template-rows: 88vh; */
     }
 }
 
 @media (max-width: 1024px) {
     #dashboard {
-        grid-template-rows: 84vh;
+        /* grid-template-rows: 84vh; */
     }
 }
