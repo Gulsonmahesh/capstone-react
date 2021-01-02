@@ -54,27 +54,27 @@ class ProductDetails extends Component {
                             <div className="p-0 mb-2">
                                 <div className="row">
                                     <div className="col-4">Performance: </div>
-                                    <div className="col">{productData.keyFeatures.performance}</div>
+                                    <div className="col">{productData.performance ? productData.performance : ''}</div>
                                 </div>
                                 <div className="row">
                                     <div className="col-4">Display: </div>
-                                    <div className="col">{productData.keyFeatures.display}</div>
+                                    <div className="col">{productData.display ? productData.display : ''}</div>
                                 </div>
                                 <div className="row">
                                     <div className="col-4">Storage: </div>
-                                    <div className="col">{productData.keyFeatures.storage}</div>
+                                    <div className="col">{productData.storage ? productData.storage: ''}</div>
                                 </div>
                                 <div className="row">
                                     <div className="col-4">Camera: </div>
-                                    <div className="col">{productData.keyFeatures.camera}</div>
+                                    <div className="col">{productData.camera ? productData.camera : ''}</div>
                                 </div>
                                 <div className="row">
                                     <div className="col-4">Battery: </div>
-                                    <div className="col">{productData.keyFeatures.battery}</div>
+                                    <div className="col">{productData.battery ? productData.battery : ''}</div>
                                 </div>
                                 <div className="row">
                                     <div className="col-4">Ram: </div>
-                                    <div className="col">{productData.keyFeatures.ram}</div>
+                                    <div className="col">{productData.ram ? productData.ram: ''}</div>
                                 </div>
                                 <div className="row">
                                 <div className="col-lg-9 col-md-12 col-sm-12">

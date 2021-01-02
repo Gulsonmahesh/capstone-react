@@ -28,11 +28,6 @@ const Signout = (props) => {
         histroy.push({pathname: `/signup/`});
     }
     
-    const addEditProduct = (e) => {
-        e.preventDefault();
-        alert('test')
-    }
-
     return (
         <Fragment>
             <ul className="navbar-nav ml-auto flex-row mr-3 align-center">
@@ -40,7 +35,7 @@ const Signout = (props) => {
                 <li><Link to="/" onClick={(event) => logout(event)} >Sign Out</Link></li>
                 <li><span data-target="dropdown1" className="btn btn-small d-none d-lg-block d-md-block">{avatar}</span></li>
                 <li><Link to="/" onClick={(event) => editProfile(event)} >Edit Details</Link></li>
-                { props.userType && <li><Link to="/" onClick={(event) => addEditProduct(event)} >Add Product</Link></li>}
+                { props.userType && <li><Link to="/addproduct">Add Product</Link></li>}
 
             </ul>
         </Fragment>
@@ -54,9 +49,13 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log()
+    if(state) {
+        return {
+            userType : state.auth.user.user[0].ädmin
+        }
+    } 
     return {
-        userType : state.auth.user.user[0].ädmin
+        userType : false
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Signout)

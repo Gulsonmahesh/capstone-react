@@ -26,6 +26,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/product/:name" component={lazy(() => import ('./components/product/ProductDetails'))} />
+            <Route path="/addproduct" component={lazy(() => import ('./components/product/Addproduct'))} />
             <Route path= "/signup" component={ Signup } />
             <Route path= "/login" component={ Login }  />
             <Route path= "/checkout" component={ lazy(() => import ('./components/product/Checkout')) }  />

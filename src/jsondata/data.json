@@ -30,16 +30,13 @@
       "name": "Honor 7X 64GB",
       "brand": "Honor",
       "images": "https://www.91-img.com/pictures/123378-v2-honor-7x-64gb-mobile-phone-large-1.jpg",
-      "announced": "07-Dec-2017",
       "mrp": 15999,
-      "keyFeatures": {
-        "performance": "HiSilicon Kirin",
-        "display": "5.93\" (15.06 cm)",
-        "storage": "64 GB",
-        "camera": "16 MP + 2 MP",
-        "battery": "3340 mAh",
-        "ram": "4 GB"
-      }
+      "performance": "HiSilicon Kirin",
+      "display": "5.93\" (15.06 cm)",
+      "storage": "64 GB",
+      "camera": "16 MP + 2 MP",
+      "battery": "3340 mAh",
+      "ram": "4 GB"
     },
     {
       "id": 2,
@@ -47,14 +44,12 @@
       "brand": "Apple",
       "mrp": 19999,
       "images": "https://www.91-img.com/pictures/138312-v6-apple-iphone-se-2020-mobile-phone-large-1.jpg?tr=q-60",
-      "keyFeatures": {
-        "performance": "A13 Bionic chip Third‑generation Neural Engine",
-        "display": "4.7-inch (diagonal) widescreen LCD",
-        "storage": "64GB 128GB 256GB",
-        "camera": "12MP Wide camera",
-        "battery": "3340 mAh",
-        "ram": "4 GB"
-      }
+      "performance": "A13 Bionic chip Third‑generation Neural Engine",
+      "display": "4.7-inch (diagonal) widescreen LCD",
+      "storage": "64GB 128GB 256GB",
+      "camera": "12MP Wide camera",
+      "battery": "3340 mAh",
+      "ram": "4 GB"
     },
     {
       "id": 3,
@@ -62,14 +57,12 @@
       "brand": "Motorolla",
       "mrp": 13999,
       "images": "https://www.91-img.com/pictures/135750-v2-moto-g8-plus-mobile-phone-large-1.jpg?tr=q-60",
-      "keyFeatures": {
-        "performance": "Octa core (2 GHz, Quad Core + 1.8 GHz, Quad core) Snapdragon 665",
-        "display": "6.3 inches (16 cm)400 PPI, IPS LCD",
-        "storage": "64GB 128GB 256GB",
-        "camera": "48 MP + 16 MP + 5 MP Triple Primary CamerasLED Flash25 MP Front Camera",
-        "battery": "4000 mAhTurbo ChargingUSB Type-C Port",
-        "ram": "4 GB"
-      }
+      "performance": "Octa core (2 GHz, Quad Core + 1.8 GHz, Quad core) Snapdragon 665",
+      "display": "6.3 inches (16 cm)400 PPI, IPS LCD",
+      "storage": "64GB 128GB 256GB",
+      "camera": "48 MP + 16 MP + 5 MP Triple Primary CamerasLED Flash25 MP Front Camera",
+      "battery": "4000 mAhTurbo ChargingUSB Type-C Port",
+      "ram": "4 GB"
     },
     {
       "id": 4,
@@ -77,14 +70,12 @@
       "brand": "Redmi",
       "mrp": 6999,
       "images": "https://www.91-img.com/pictures/139183-v4-xiaomi-poco-c3-mobile-phone-large-1.jpg?tr=q-60",
-      "keyFeatures": {
-        "performance": "Octa Core, 2.3 GHzMediaTek Helio G35",
-        "display": "6.53 inches (16.59 cm)269 PPI, IPS LCD",
-        "storage": "32 GB + 512 GB Expandable",
-        "camera": "13 MP + 2 MP + 2 MP Triple Primary CamerasLED Flash5 MP Front Camera",
-        "battery": "5000 mAhMicro-USB PortNon-Removable",
-        "ram": "3 GB"
-      }
+      "performance": "Octa Core, 2.3 GHzMediaTek Helio G35",
+      "display": "6.53 inches (16.59 cm)269 PPI, IPS LCD",
+      "storage": "32 GB + 512 GB Expandable",
+      "camera": "13 MP + 2 MP + 2 MP Triple Primary CamerasLED Flash5 MP Front Camera",
+      "battery": "5000 mAhMicro-USB PortNon-Removable",
+      "ram": "3 GB"
     },
     {
       "id": 5,
@@ -92,14 +83,12 @@
       "brand": "Realme",
       "mrp": 12999,
       "images": "https://www.91-img.com/pictures/130228-v4-realme-c1-mobile-phone-large-1.jpg?tr=q-60",
-      "keyFeatures": {
-        "performance": "Octa Core, 1.8 GHzSnapdragon 450",
-        "display": "4.7-inch (diagonal) widescreen LCD",
-        "storage": "16 GB + 256 GB Expandable",
-        "camera": "13 MP + 2 MP Dual Primary CamerasLED Flash5 MP Front Camera",
-        "battery": "4230 mAhMicro-USB PortNon-Removable",
-        "ram": "2 GB"
-      }
+      "performance": "Octa Core, 1.8 GHzSnapdragon 450",
+      "display": "4.7-inch (diagonal) widescreen LCD",
+      "storage": "16 GB + 256 GB Expandable",
+      "camera": "13 MP + 2 MP Dual Primary CamerasLED Flash5 MP Front Camera",
+      "battery": "4230 mAhMicro-USB PortNon-Removable",
+      "ram": "2 GB"
     },
     {
       "id": 6,
@@ -107,14 +96,12 @@
       "brand": "Redmi",
       "mrp": 8999,
       "images": "https://www.91-img.com/pictures/136302-v8-xiaomi-redmi-9-mobile-phone-large-1.jpg?tr=q-60",
-      "keyFeatures": {
-        "performance": "Octa Core, 2.3 GHzMediaTek Helio G35",
-        "display": "6.53 inches (16.59 cm)269 PPI, IPS LCD",
-        "storage": "64 GB + 512 GB Expandable",
-        "camera": "13 MP + 2 MP Dual Primary CamerasLED Flash5 MP Front Camera",
-        "battery": "5000 mAhMicro-USB PortNon-Removable",
-        "ram": "4 GB"
-      }
+      "performance": "Octa Core, 2.3 GHzMediaTek Helio G35",
+      "display": "6.53 inches (16.59 cm)269 PPI, IPS LCD",
+      "storage": "64 GB + 512 GB Expandable",
+      "camera": "13 MP + 2 MP Dual Primary CamerasLED Flash5 MP Front Camera",
+      "battery": "5000 mAhMicro-USB PortNon-Removable",
+      "ram": "4 GB"
     },
     {
       "id": 7,
@@ -122,14 +109,12 @@
       "brand": "Apple",
       "mrp": 77503,
       "images": "https://www.91-img.com/pictures/136139-v4-apple-iphone-12-mobile-phone-large-1.jpg?tr=q-60",
-      "keyFeatures": {
-        "performance": "Hexa Core (3.1 GHz, Dual Core + 1.8 GHz, Quad core)Apple A14 Bionic",
-        "display": "6.1 inches (15.49 cm)457 PPI, OLED",
-        "storage": "64 GB, Non Expandable",
-        "camera": "12 MP + 12 MP Dual Primary CamerasDual LED Flash12 MP Front Camera",
-        "battery": "2815 mAhFast ChargingLightning Port",
-        "ram": "4 GB"
-      }
+      "performance": "Hexa Core (3.1 GHz, Dual Core + 1.8 GHz, Quad core)Apple A14 Bionic",
+      "display": "6.1 inches (15.49 cm)457 PPI, OLED",
+      "storage": "64 GB, Non Expandable",
+      "camera": "12 MP + 12 MP Dual Primary CamerasDual LED Flash12 MP Front Camera",
+      "battery": "2815 mAhFast ChargingLightning Port",
+      "ram": "4 GB"
     }
   ],
   "productsviewed": [
