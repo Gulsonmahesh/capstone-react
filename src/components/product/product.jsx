@@ -37,7 +37,7 @@ const Product = ({productData}) => {
         return (
             <Fragment>
                 {
-                    productList.map((productRow, index) => <div className="row mb-2 mr-2 ml-0" key= {index}>{
+                    productList && productList.map((productRow, index) => <div className="row mb-2 mr-2 ml-0" key= {index}>{
                         productRow.map((product) => {
                             return (
                                 <div className="col-sm-12 col-md-4 col-lg-4 p-1" key ={product.name}>

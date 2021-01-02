@@ -8,53 +8,83 @@ import { initProducts } from '../../store/actions/productAction';
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
+import { API_BASE_ADDRESS } from '../../utilities/constants';
 
 class Productsummary extends Component {
     constructor(props) {
         super(props);
-        this.state = { modifyStatus: false, selectedId: null }
+        this.state = { modifyStatus: false, selectedId: null, selectedOption: '', userStatus: false }
     }
     componentDidMount() {
         this.props.initProducts();
+        let userDetails = {loginStatus : false};
+        if(sessionStorage.getItem('userStatus')) {
+            userDetails = JSON.parse(sessionStorage.getItem('userStatus'));
+            this.setState({userStatus : userDetails.admin})
+        }
         document.querySelector('html').style.overflow = 'auto';
     }
     componentWillUnmount() {
         document.querySelector('html').style.overflow = 'hidden';
     }
-    getProductId = () => {
-        this.setState({ modifyStatus: !this.state.modifyStatus })
+    getProductId = (selectedMethod) => {
+        this.setState({ modifyStatus: !this.state.modifyStatus, selectedOption: selectedMethod})
     }
-
-    handleSubmit = (e) => {
+    gotoaddproduct = () => {
+        this.props.history.push('/addproduct');
+    }
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(this.state)
+        if(this.state.selectedOption === 'delete'){
+            await fetch(`${API_BASE_ADDRESS}/modals/${this.state.selectedId}`, { method: 'DELETE'}).then(result => {
+                if(result.status === 200) {
+                    this.props.initProducts();
+                } else {
+                    alert('unable to remove the deatils to make the update on the previous details');
+                }
+            }).catch(error => {
+                console.log('Error', error);
+            });
+        } else {
+            
+        }
         
+    }
+    handleChange = (e) => {
+        setTimeout(() => {
+            const { name, value } = e.target;
+            this.setState({
+                [name] : value
+            })
+        }, 0);
     }
     render() {
         return (
             <Fragment>
                 <Container fluid>
-                    <Row className="mt-2">
+                    {
+                        this.state.userStatus && <Row className="mt-2">
                         <Col>
                             <Alert variant="success">
                                 <Alert.Heading>Welcome. How's it going?! You have an Admin Rights to sum Product Actions</Alert.Heading>
                                 <hr />
                                 <div className="d-flex justify-content-end">
-                                    <Button variant="outline-success">Add</Button>
-                                    <Button variant="outline-primary" onClick={this.getProductId}>Edit!</Button>
-                                    <Button variant="outline-danger" onClick={this.getProductId}>Remove</Button>
+                                    <Button variant="outline-success" onClick={this.gotoaddproduct}>Add</Button>
+                                    <Button variant="outline-primary" onClick={() => this.getProductId('edit')}>Edit!</Button>
+                                    <Button variant="outline-danger" onClick={() => this.getProductId('delete')}>Remove</Button>
                                 </div>
                             </Alert>
                         </Col>
-                    </Row>
+                        </Row>
+                    }
                     {
-                        this.state.modifyStatus && <Row className="mt-2" >
+                        this.state.modifyStatus && <Row className="mt-2">
                         <Col>
                             <Form onSubmit={this.handleSubmit}>
                                 <Form.Row className="align-items-center">
                                     <Col xs="auto">
-                                        <Form.Label className="d-inline-block" htmlFor="inlineFormInput">Enter Id of the product</Form.Label>
-                                    </Col>
-                                    <Col xs="auto">
-                                        <Form.Control className="mb-2" id="inlineFormInput" placeholder="id listed below"/>
+                                        <Form.Control name="selectedId" onChange={this.handleChange} className="mb-2" id="inlineFormInput" placeholder="Enter Id of the product"/>
                                     </Col>
                                     <Col xs="auto">
                                         <Button type="submit" className="mb-2"> Submit</Button>
@@ -80,7 +110,7 @@ class Productsummary extends Component {
                                 </thead>
                                 <tbody>
                                     {
-                                        this.props.products && this.props.products.length && this.props.products.map((singleProduct) => {
+                                        this.props.products && this.props.products.length!==0 && this.props.products.map((singleProduct) => {
                                             return <tr key={singleProduct.id}>
                                                 <td>{singleProduct.id}</td>
                                                 <td>{singleProduct.name}</td>
