@@ -48,7 +48,9 @@ class Productsummary extends Component {
                             <Form>
                                 <Form.Row className="align-items-center">
                                     <Col xs="auto">
-                                        <Form.Label htmlFor="inlineFormInput" srOnly>Name</Form.Label>
+                                        <Form.Label className="d-inline-block" htmlFor="inlineFormInput">Enter Id of the product</Form.Label>
+                                    </Col>
+                                    <Col xs="auto">
                                         <Form.Control className="mb-2" id="inlineFormInput" placeholder="Jane Doe"/>
                                     </Col>
                                     <Col xs="auto">
