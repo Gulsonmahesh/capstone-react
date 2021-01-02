@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom';
-// import { API_BASE_ADDRESS, API_OPTION } from '../../utilities/constants';
+import { API_BASE_ADDRESS, API_OPTION } from '../../utilities/constants';
 
 class Addproduct extends Component {
     constructor(props) {
@@ -25,8 +25,19 @@ class Addproduct extends Component {
         console.log(this.state)
     }
 
-    saveProduct = () => {
-        this.setState({submitted: true})
+    saveProduct = async (e) => {
+        e.preventDefault();
+        this.setState({submitted: true});
+        await fetch(`${API_BASE_ADDRESS}/modals`,{...API_OPTION, body: JSON.stringify(this.state)}).then(res => res.json).then(result => {
+            if(result.state === 200) {
+                alert('Product Added');
+            } else {
+                alert('unable to remove the deatils to make the update on the previous details');
+            }
+        }).catch((error) => {
+                alert('error')
+                console.log('Error:', error);
+        });
     }
     
     render () {
