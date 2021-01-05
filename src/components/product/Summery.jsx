@@ -24,6 +24,9 @@ class Productsummary extends Component {
             this.setState({userStatus : userDetails.admin})
         }
         document.querySelector('html').style.overflow = 'auto';
+        fetch(`${API_BASE_ADDRESS}/productsmostviewed?_sort=id`).then(res => res.json()).then(result => console.log(result)).catch( error => {
+            console.log(error)
+        })
     }
     componentWillUnmount() {
         document.querySelector('html').style.overflow = 'hidden';

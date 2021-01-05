@@ -3,7 +3,7 @@ import { API_BASE_ADDRESS } from '../../utilities/constants';
 export const initProducts = () => {
     return async (dispatch) => {
         try {
-            await fetch(`${API_BASE_ADDRESS}/modals`).then( res => res.json()).then( result => {
+            await fetch(`${API_BASE_ADDRESS}/modals?_sort=id`).then( res => res.json()).then( result => {
                 dispatch({type: 'LOAD_PRODUCT', result});
             })
             
@@ -42,6 +42,28 @@ export const removeFromcart = (id) => {
         } catch(error) {
             console.log(error);
             dispatch({type: 'PROD_REMOVE_FAILURE', error });
+        }
+    }
+}
+
+export const addtomostfavourite = (id) => {
+    return (dispatch) => {
+        try {
+            dispatch({type: 'PROD_ADD_FAVOURITE', id});
+        } catch(error) {
+            console.log(error);
+            dispatch({type: 'PROD_ADD_FAVOURITE_FAILURE', error });
+        }
+    }
+}
+
+export const addtomostbuyed = (id) => {
+    return (dispatch) => {
+        try {
+            dispatch({type: 'PROD_ADD_MOST_BUYED', id});
+        } catch(error) {
+            console.log(error);
+            dispatch({type: 'PROD_ADD_MOST_BUYED_FAILURE', error });
         }
     }
 }

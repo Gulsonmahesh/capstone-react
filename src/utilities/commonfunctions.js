@@ -16,3 +16,11 @@ export const checkDuplicate = (id) => {
     }
     return alreadyExist;
 }
+
+export const returnState = (state, productInsession) => {
+    sessionStorage.setItem('productsincart', JSON.stringify(productInsession));
+    return state = {
+        ...state,
+        productsincart:productInsession
+    }
+}

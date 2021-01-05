@@ -128,5 +128,12 @@
       "submitted": true
     }
   ],
-  "productsviewed": []
+  "productsmostviewed": [
+    {
+      "id": 1,
+      "name": "Honor 7X 64GB",
+      "timeofview": 1
+    }
+  ],
+  "productsmostbuyed": []
 }

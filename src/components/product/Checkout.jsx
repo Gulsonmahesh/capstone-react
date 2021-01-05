@@ -76,7 +76,7 @@ class Checkout extends Component {
               openModal ? <AlertModal gotologin={() => this.reRoutetoHome('/login')} loginStatus={this.state.notproceedtopayment} closeModal={this.closeModal} message= "Please login before proceed to Payment" />
               : (openModal === false ) ? <AlertModal loginStatus={this.state.notproceedtopayment} closeModal={this.closeModal} message= "Module yet to develop" /> : '' 
             }
-          <Container fluid id="checkoutcontainer" className="mt-5 pt-5 mb-5">
+          <Container fluid id="checkoutcontainer" className="pt-2 mb-5">
             <Row>
             <Col sm={12} md={4} lg={4} className="p-3">
                 <Card>

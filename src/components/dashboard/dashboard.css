@@ -5,7 +5,7 @@
     grid-template-areas: "sidebar mainbar";
     justify-self: start;
     column-gap: 10px;
-    margin-top: 4rem !important;
+    margin-top: 1rem !important;
 }
 
 .leftpane {

@@ -46,7 +46,7 @@ const Product = ({productData}) => {
                                         <Card.Body className="mb-1 mb-md-0 mb-lg-0 p-1">
                                             <h6 className="card-title text-center" onClick={() => openProduct(product)} >{product.name}</h6>                                            
                                         </Card.Body>
-                                        <Card.Footer className="d-flex justify-content-center border-0">
+                                        <Card.Footer className="d-flex justify-content-center border-0 bg-transparent">
                                             <Button size="sm" varient="primary" className="addtocart" onClick={() => addtoCart(product)}>Add To Cart</Button>
                                         </Card.Footer>
                                     </Card>

@@ -1,3 +1,5 @@
+// import { returnState } from '../actions/productAction';
+
 const initProductState = {
     products: [],
     productsincart: sessionStorage.getItem('productsincart') ? JSON.parse(sessionStorage.getItem('productsincart')) : []
@@ -37,6 +39,10 @@ const productReducer = (state = initProductState, action) => {
                 return productInsession;
             });
             return returnState(state, productInsession);
+        case 'PROD_ADD_FAVOURITE':
+            return state;
+        case 'PROD_ADD_MOST_BUYED':
+            return state;
         default:
             return state;
     }

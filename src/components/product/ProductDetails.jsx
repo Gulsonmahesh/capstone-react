@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { API_BASE_ADDRESS } from '../../utilities/constants'
+import { API_BASE_ADDRESS, API_OPTION } from '../../utilities/constants'
 import { connect } from 'react-redux';
 import { addtocart } from '../../store/actions/productAction';
 import Button from 'react-bootstrap/Button';
@@ -15,13 +15,42 @@ class ProductDetails extends Component {
         document.querySelector('html').style.overflow = 'auto';
         fetch(`${API_BASE_ADDRESS}/modals?name=${this.state.viewproduct}`).then(res => res.json()).then (
             result =>  {
-                this.setState({productDetails : result[0]})
+                this.setState({productDetails : result[0]});
+                fetch(`${API_BASE_ADDRESS}/productsmostviewed/?id=${this.state.productDetails.id}`).then(res => res.json()).then(
+                    result => {
+                        if(result && result[0].length) {
+                            this.changeViewCount('update', {id: result[0].id, name: result[0].name, timeofview: parseInt(result[0].timeofview) + 1})
+                        } else {
+                            this.changeViewCount('insert', {id: this.state.productDetails.id, name: this.state.productDetails.name, timeofview: 1})
+                        }
+                    }
+                )
             }
         ).catch(err=> {
-            alert("Unable to retrieve data");
+            alert("Unable to retrieve data", err);
         })
     }
     
+    addmostviewed = async (product) => {
+        console.log(product)
+        await fetch(`${API_BASE_ADDRESS}/productsmostviewed`,{...API_OPTION, body: JSON.stringify(product)}).then(result => {
+            console.log(result)
+        }).catch((error) => {
+            console.log('Error:', error);
+        });
+    }
+
+    changeViewCount = (type, productData) => {
+        if(type === 'update') {
+            fetch(`${API_BASE_ADDRESS}/productsmostviewed/${productData.id}`, {method : 'delete'})
+            .then(result => {
+                this.addmostviewed(productData)
+            })
+        } else {
+            console.log(productData)
+            this.addmostviewed(productData)
+        }
+    }
     addtocart = (id) => {
         let productSelected = this.state.productDetails;
          if(checkDuplicate(id)) {
