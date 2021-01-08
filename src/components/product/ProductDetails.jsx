@@ -18,7 +18,7 @@ class ProductDetails extends Component {
                 this.setState({productDetails : result[0]});
                 fetch(`${API_BASE_ADDRESS}/productsmostviewed/?id=${this.state.productDetails.id}`).then(res => res.json()).then(
                     result => {
-                        if(result && result[0].length) {
+                        if(result && result[0] && result[0].length) {
                             this.changeViewCount('update', {id: result[0].id, name: result[0].name, timeofview: parseInt(result[0].timeofview) + 1})
                         } else {
                             this.changeViewCount('insert', {id: this.state.productDetails.id, name: this.state.productDetails.name, timeofview: 1})

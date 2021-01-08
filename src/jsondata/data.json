@@ -126,12 +126,35 @@
       "ram": "5 GB",
       "id": 1,
       "submitted": true
+    },
+    {
+      "name": "Realme 7 Pro",
+      "brand": "Realme",
+      "mrp": "19994",
+      "images": "https://www.91-img.com/pictures/138386-v3-realme-7-pro-mobile-phone-large-1.jpg?tr=q-60",
+      "performance": "Octa core (2.3 GHz, Dual Core + 1.8 GHz, Hexa Core) Snapdragon 720G",
+      "display": "Display 6.4 inches (16.26 cm) 411 PPI, Super AMOLED",
+      "storage": "128 GB + 256 GB Expandable",
+      "camera": "64 + 8 + 2 + 2 MP Quad Primary Cameras LED Flash 32 MP Front Camera",
+      "battery": "4500 mAhSuper Dart Charging SB Type-C Port",
+      "ram": "6 GB",
+      "id": 8
     }
   ],
   "productsmostviewed": [
     {
       "id": 1,
       "name": "Honor 7X 64GB",
+      "timeofview": 1
+    },
+    {
+      "id": 8,
+      "name": "Realme 7 Pro",
+      "timeofview": 1
+    },
+    {
+      "id": 3,
+      "name": "Moto 8",
       "timeofview": 1
     }
   ],
