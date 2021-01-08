@@ -148,14 +148,14 @@
       "timeofview": 1
     },
     {
-      "id": 1,
-      "name": "Honor 7X 64GB",
-      "timeofview": 2
-    },
-    {
       "id": 3,
       "name": "Moto 8",
       "timeofview": 4
+    },
+    {
+      "id": 1,
+      "name": "Honor 7X 64GB",
+      "timeofview": 3
     }
   ],
   "productsmostbuyed": []
