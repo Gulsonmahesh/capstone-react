@@ -143,19 +143,19 @@
   ],
   "productsmostviewed": [
     {
-      "id": 1,
-      "name": "Honor 7X 64GB",
-      "timeofview": 1
-    },
-    {
       "id": 8,
       "name": "Realme 7 Pro",
       "timeofview": 1
     },
     {
+      "id": 1,
+      "name": "Honor 7X 64GB",
+      "timeofview": 2
+    },
+    {
       "id": 3,
       "name": "Moto 8",
-      "timeofview": 1
+      "timeofview": 4
     }
   ],
   "productsmostbuyed": []

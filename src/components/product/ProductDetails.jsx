@@ -18,7 +18,7 @@ class ProductDetails extends Component {
                 this.setState({productDetails : result[0]});
                 fetch(`${API_BASE_ADDRESS}/productsmostviewed/?id=${this.state.productDetails.id}`).then(res => res.json()).then(
                     result => {
-                        if(result && result[0] && result[0].length) {
+                        if(result && result[0] && result.length) {
                             this.changeViewCount('update', {id: result[0].id, name: result[0].name, timeofview: parseInt(result[0].timeofview) + 1})
                         } else {
                             this.changeViewCount('insert', {id: this.state.productDetails.id, name: this.state.productDetails.name, timeofview: 1})
@@ -32,7 +32,6 @@ class ProductDetails extends Component {
     }
     
     addmostviewed = async (product) => {
-        console.log(product)
         await fetch(`${API_BASE_ADDRESS}/productsmostviewed`,{...API_OPTION, body: JSON.stringify(product)}).then(result => {
             console.log(result)
         }).catch((error) => {
@@ -42,12 +41,11 @@ class ProductDetails extends Component {
 
     changeViewCount = (type, productData) => {
         if(type === 'update') {
-            fetch(`${API_BASE_ADDRESS}/productsmostviewed/${productData.id}`, {method : 'delete'})
+            fetch(`${API_BASE_ADDRESS}/productsmostviewed/${productData.id}`, {method : 'DELETE'})
             .then(result => {
                 this.addmostviewed(productData)
             })
         } else {
-            console.log(productData)
             this.addmostviewed(productData)
         }
     }
