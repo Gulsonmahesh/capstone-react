@@ -77,7 +77,7 @@ class Signup extends Component {
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-lg-8 offset-lg-2 mt-4">
-                    <h2>{ title }</h2>
+                    <h2 data-test="title">{ title }</h2>
                     <form name="adduser" onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label>First Name</label>

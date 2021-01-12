@@ -45,12 +45,7 @@ class Login extends Component {
 
     render() {
         const sessionUser = JSON.parse(sessionStorage.getItem('userStatus'));
-        // console.log(sessionUser)
         const styleContainer = {
-            // container: {
-            //     maxWidth : '500px',
-            //     height: '80vh'
-            // },
             input : {
                 color: 'black'
             }
@@ -83,7 +78,6 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state);
     return {
         user: state.auth.loginStatus
     }

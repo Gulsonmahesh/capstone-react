@@ -1,8 +1,18 @@
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { Provider } from "react-redux";
+import configureMockStore from "redux-mock-store";
+import { shallow } from 'enzyme';
+
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+const mockStore = configureMockStore();
+const store = mockStore({});
+
+describe('App Component', () => {
+  test('Render App Component without Error', () => {
+    const appComponent = shallow(<Provider store={store}><App /></Provider>);
+    expect(appComponent).toBe(appComponent);
+    console.log('Rendered Successfully');
+  });
+  
+})

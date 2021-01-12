@@ -5,12 +5,12 @@ import Product from './product';
 class ProductList extends Component {
     render() {
         let selectedBrand = '';
-        let selectedPrice = '';
+        // let selectedPrice = '';
         let productData = [];
 
         if (this.props.filterProduct !== null ){
             selectedBrand = (this.props.filterProduct.selectedBrand) ? (this.props.filterProduct.selectedBrand).trim() : '';
-            selectedPrice = (this.props.filterProduct.selectedPrice) ? this.props.filterProduct.selectedPrice : '';
+            // selectedPrice = (this.props.filterProduct.selectedPrice) ? this.props.filterProduct.selectedPrice : '';
             if (selectedBrand === 'All') {
                 productData = this.props.products;
             } else {

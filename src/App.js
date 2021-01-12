@@ -20,11 +20,12 @@ class App extends Component {
     this.props.initProducts();
   }
   render() {
+    const loginStatus = this.props.user.loginStatus;
     return (
       <ErrorWrapper>
         <Router>
           <Suspense fallback="Loading">
-          <NavBar loginStatus= {this.props.user.loginStatus} />
+          <NavBar loginStatus= {loginStatus} />
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/product/:name" component={lazy(() => import ('./components/product/ProductDetails'))} />
@@ -52,7 +53,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = state => {
   return {    
-    user: state.auth
+    user: state.auth ? state.auth : false
   }
 }
 

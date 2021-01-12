@@ -18,7 +18,7 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div className="p-0 m-0" id="dashboard">
+            <div className="p-0 m-0" id="dashboard" data-test="dashboard">
                 <div className="leftpane">
                     <LeftPane onChangeFilter = {filterValue => this.updateFilter(filterValue)} />
                 </div>

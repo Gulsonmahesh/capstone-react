@@ -7,17 +7,17 @@ import { useHistory } from 'react-router';
 
 const Signout = (props) => {
     const [avatar, setAvatar] = useState('');
-    const [userType, setUserType] = useState(false)
+    // const [userType, setUserType] = useState(false)
     const histroy = useHistory();    
 
     useEffect(()=> {
         if(sessionStorage.getItem('userStatus')) {
             let userStatus = JSON.parse(sessionStorage.getItem('userStatus'));
             setAvatar(userStatus.user[0].firstName[0]+userStatus.user[0].lastName[0]);
-            setUserType(userStatus.user[0].admin)
+            // setUserType(userStatus.user[0].admin)
         } else {
             setAvatar('');
-            setUserType(false)
+            // setUserType(false)
         }
     },[])
 
