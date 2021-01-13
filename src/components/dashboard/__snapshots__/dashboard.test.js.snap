@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`All Product Page Snapshot  Dash board component renderer correctly by snapshot 1`] = `
+exports[`Dash board component testing Render with out error using snapshot 1`] = `
 <ContextProvider
   value={
     Object {

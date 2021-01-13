@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 const AlertModal = (props) => {
     return (
         <Fragment>
-            <div className="modal d-block" tabIndex="-1" role="dialog">
+            <div className="modal d-block" tabIndex="-1" role="dialog" data-test='modal'>
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-body">

@@ -69,7 +69,7 @@ class ProductDetails extends Component {
             <Fragment>
                 {
                     productData !== null && 
-                    <div className = "container-fluid p-2 mt-5">
+                    <div className = "container-fluid p-2 mt-5" data-test='productdetails'>
                     <div className="row m-1 p-2">
                         <div className="col-md-6 col-lg-4 col-sm-5">
                             <img className="mb-3" src={productData.images} alt={productData.name} />

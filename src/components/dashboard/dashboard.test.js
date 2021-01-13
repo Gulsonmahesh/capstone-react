@@ -1,41 +1,38 @@
-import React from 'react';
-import Dashboard from './Dashboard';
+import React from 'react'
 import { shallow } from 'enzyme';
 import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
-import RightPane from './RightPane';
-import LeftPane from './LeftPane';
 
-const mockStore = configureMockStore();
-const store = mockStore({});
+import Dashboard from './Dashboard.jsx';
+import LeftPane from './LeftPane.jsx';
+import RightPane from './RightPane.jsx';
 
+describe('Dash board component testing', () => {
 
+    const mockStore = configureMockStore();
+    const store = mockStore({});
+    let enzymeWrapper;
 
-describe("All Product Page Snapshot ", () => {
-    let wrapper;
-    
     beforeEach(() => {
-        wrapper = shallow(<Provider store={store}><Dashboard /></Provider>).dive()
+        enzymeWrapper = shallow(<Provider store={store}><Dashboard /></Provider>);
     })
 
     afterEach(() => {
-        wrapper.unmount();
+        enzymeWrapper.unmount();
+    })
+    test('Render with out error using snapshot', () => {
+        console.log('Render Using Snapshot');
+        expect(enzymeWrapper).toMatchSnapshot()
     })
 
-    test('Dash board component renderer correctly by snapshot', ()=> {
-        expect(wrapper).toMatchSnapshot();
+    test('Dashboard have a leftpane',()=>{
+        expect(enzymeWrapper.containsMatchingElement(<LeftPane />)).toBeDefined()
+        console.log('Dashboard have a LeftPane');
     })
 
-    // test('Dash board component renderer correctly by renderer', ()=> {
-    //     expect(wrapper.render());
-    // })
-
-    test('Dash board component Left Pane Component', ()=> {
-        expect(wrapper.find('.leftpane').length).toEqual(1);
-    })
-
-    test('Dash board component Right Pane Component', ()=> {
-        expect(wrapper.find(RightPane).length).toEqual(1);
+    test('Dashboard have a rightpane',()=>{
+        expect(enzymeWrapper.find(<RightPane />)).toBeDefined()
+        console.log('Dashboard have a RightPane');
     })
 
 });
