@@ -24,7 +24,7 @@ class Addproduct extends Component {
             setTimeout(() => {
                 if (this.props.product !== null) {
                     let selectedProduct = this.props.product.filter( product => product.id === parseInt(this.props.match.params.id))
-                    this.setState({...selectedProduct[0]});
+                    this.setState({...selectedProduct[0],submitted: false});
                 }
             }, 1000);
         }

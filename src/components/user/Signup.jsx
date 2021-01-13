@@ -16,7 +16,7 @@ class Signup extends Component {
     componentDidMount() {
         if(sessionStorage.getItem("userStatus")){
             let user = JSON.parse(sessionStorage.getItem('userStatus'));
-            this.setState({...user.user[0], loginStatus: true})
+            this.setState({...user.user[0], loginStatus: true,submitted: false})
         } else {
             this.setState({loginStatus: false})
         }
