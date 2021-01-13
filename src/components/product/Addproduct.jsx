@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { API_BASE_ADDRESS, API_OPTION } from '../../utilities/constants';
 import { connect } from 'react-redux';
 import { initProducts } from '../../store/actions/productAction'
+import { Prompt } from 'react-router-dom'
 
 class Addproduct extends Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class Addproduct extends Component {
         this.state = {
             name: '', brand: '', mrp: '' , images: '', performance: '',
             display: '', storage: '', camera: '', battery: '', ram: '',
-            submitted: false, registering: false
+            submitted: false, registering: false, touched: false
         }
     }
 
@@ -42,6 +43,7 @@ class Addproduct extends Component {
         this.setState({
             [name] : value
         })
+        this.setState({touched : true});
     }
     insertProduct = async () => {
         await fetch(`${API_BASE_ADDRESS}/modals`,{...API_OPTION, body: JSON.stringify(this.state)}).then(result => {
@@ -103,6 +105,7 @@ class Addproduct extends Component {
 
         return (
             <Fragment>
+                <Prompt when={producttoadd.touched && !submitted} message="Are you sure you want to leave the dully filled details of New Product Insertation?" />
                 <Container fluid className="p-5">
                     <Row>
                         <Col>

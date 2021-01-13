@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { API_BASE_ADDRESS, API_OPTION } from '../../utilities/constants';
+import { Prompt } from 'react-router-dom'
 
 class Signup extends Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class Signup extends Component {
         this.state = {
             firstName: '', lastName: '',  username: '', password: '', 
             email: '', submitted: false, registering: false,
-            loginStatus: false
+            loginStatus: false,formtouched: false
         }
     }
 
@@ -22,10 +23,12 @@ class Signup extends Component {
     }
 
     handleChange = (e) => {
+        console.log('called onchange on load',  e.target)
         const { name, value } = e.target;
         this.setState({
             [name] : value
         })
+        this.setState({formtouched:true})
     }
 
     insertUser = (event) => {
@@ -70,11 +73,13 @@ class Signup extends Component {
 
     render() {
         const user = this.state;
+        console.log(user.submitted && user.formtouched);
         const submitted = user.submitted;
         const registering = user.registering;
         const title = user.loginStatus ? 'Edit Your Details' : 'Register your Details';
         return (
             <div className="container mt-5">
+                <Prompt when={user.formtouched && !user.submitted} message="Are you sure you want to leave the details not to be submitted?" />
                 <div className="row">
                     <div className="col-lg-8 offset-lg-2 mt-4">
                     <h2 data-test="title">{ title }</h2>
@@ -95,7 +100,7 @@ class Signup extends Component {
                         </div>
                         <div className="form-group">
                             <label>Username</label>
-                            <input type="text" name="username" value={user.username} onChange={this.handleChange} className={'form-control' + (submitted && !user.username ? ' is-invalid' : '')} />
+                            <input type="text" autoComplete="false" name="username" value={user.username} onChange={this.handleChange} className={'form-control' + (submitted && !user.username ? ' is-invalid' : '')} />
                             {submitted && !user.username &&
                                 <div className="invalid-feedback">Username is required</div>
                             }
@@ -110,7 +115,7 @@ class Signup extends Component {
 
                         <div className="form-group">
                             <label>Password</label>
-                            <input type="password" name="password" value={user.password} onChange={this.handleChange} className={'form-control' + (submitted && !user.password ? ' is-invalid' : '')} />
+                            <input type="password" autoComplete="false" name="password" value={user.password} onChange={this.handleChange} className={'form-control' + (submitted && !user.password ? ' is-invalid' : '')} />
                             {submitted && !user.password &&
                                 <div className="invalid-feedback">Password is required</div>
                             }

@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import{ loginAction, loginFailure } from '../../store/actions/authAction';
 import { Redirect } from 'react-router-dom';
 import { API_BASE_ADDRESS } from '../../utilities/constants'
+import { Prompt } from 'react-router-dom'
 
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = { email: '', password: ''}
+        this.state = { email: '', password: '',submitted: false, formtouched: false}
     }
     
     handleChange = (e) => {
@@ -15,9 +16,11 @@ class Login extends Component {
         this.setState({
             [e.target.id] : e.target.value
         })
+        this.setState({formtouched:true})
     }
     handleSubmit = (e) => {
         e.preventDefault();
+        this.setState({submitted: true});
         fetch(`${API_BASE_ADDRESS}/users?email=${this.state.email}&password=${this.state.password}`).then(response => response.json())
         .then(data => {
             console.log(data);
@@ -54,6 +57,7 @@ class Login extends Component {
         return (
             
             <div id="logincontainer" className="container mt-5 align-items-center">
+                <Prompt when={this.state.formtouched && !this.state.submitted} message="Are you sure you want to skip the Login?" />
                 <div className="row p-5">
                     <div className="col-lg-8 offset-lg-2 mt-4">
                         <form name="form" onSubmit={this.handleSubmit}>
