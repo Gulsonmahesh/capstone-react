@@ -24,6 +24,7 @@ const Signout = (props) => {
     const logout = (event) => {
         event.preventDefault();
         props.logOut();
+        histroy.push({pathname: `/`});
     }
 
     const editProfile = (event) => {

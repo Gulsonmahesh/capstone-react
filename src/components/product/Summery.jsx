@@ -7,14 +7,13 @@ import { connect } from 'react-redux'
 import { initProducts } from '../../store/actions/productAction';
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form'
 import { API_BASE_ADDRESS } from '../../utilities/constants';
 import { Link }from 'react-router-dom'
 
 class Productsummary extends Component {
     constructor(props) {
         super(props);
-        this.state = { modifyStatus: false, selectedId: null, selectedOption: '', userStatus: false }
+        this.state = { userStatus: false }
     }
     componentDidMount() {
         this.props.initProducts();
@@ -31,17 +30,12 @@ class Productsummary extends Component {
     componentWillUnmount() {
         document.querySelector('html').style.overflow = 'hidden';
     }
-    getProductId = (selectedMethod) => {
-        this.setState({ modifyStatus: !this.state.modifyStatus, selectedOption: selectedMethod})
-    }
     gotoaddproduct = () => {
         this.props.history.push('/addproduct');
     }
-    handleSubmit = async (e) => {
-        e.preventDefault();
-        console.log(this.state)
-        if(this.state.selectedOption === 'delete'){
-            await fetch(`${API_BASE_ADDRESS}/modals/${this.state.selectedId}`, { method: 'DELETE'}).then(result => {
+    handleSubmit = async (id, option) => {
+        if (option === 'delete') {
+            await fetch(`${API_BASE_ADDRESS}/modals/${id}`, { method: 'DELETE'}).then(result => {
                 if(result.status === 200) {
                     this.props.initProducts();
                 } else {
@@ -51,15 +45,13 @@ class Productsummary extends Component {
                 console.log('Error', error);
             });
         } else {
-            this.props.history.push(`/editproduct/${this.state.selectedId}`)
+            this.props.history.push(`/editproduct/${id}`)
         }
     }
     handleChange = (e) => {
         setTimeout(() => {
             const { name, value } = e.target;
-            this.setState({
-                [name] : value
-            })
+            this.setState({[name] : value})
         }, 0);
     }
     render() {
@@ -69,37 +61,18 @@ class Productsummary extends Component {
                     {
                         this.state.userStatus && <Row className="mt-2">
                         <Col>
-                            <Alert variant="success">
-                                <Alert.Heading>Welcome. How's it going?! You have an Admin Rights to sum Product Actions</Alert.Heading>
-                                <hr />
-                                <div className="d-flex justify-content-end">
-                                    <Button variant="outline-success" onClick={this.gotoaddproduct}>Add</Button>
-                                    <Button variant="outline-primary" onClick={() => this.getProductId('edit')}>Edit!</Button>
-                                    <Button variant="outline-danger" onClick={() => this.getProductId('delete')}>Remove</Button>
+                            <Alert variant="light">
+                                <div className="d-flex justify-content-between flex-column flex-md-row flex-lg-row">
+                                    <Alert.Heading className="mx-sm-10">Welcome. How's it going?! You have an Admin Rights to sum Product Actions</Alert.Heading>
+                                    <Button className="p-2" variant="outline-success" onClick={this.gotoaddproduct}>Add</Button>                                    
                                 </div>
                             </Alert>
                         </Col>
                         </Row>
                     }
-                    {
-                        this.state.modifyStatus && <Row className="mt-2">
-                        <Col>
-                            <Form onSubmit={this.handleSubmit}>
-                                <Form.Row className="align-items-center">
-                                    <Col xs="auto">
-                                        <Form.Control name="selectedId" onChange={this.handleChange} className="mb-2" id="inlineFormInput" placeholder="Enter Id of the product"/>
-                                    </Col>
-                                    <Col xs="auto">
-                                        <Button type="submit" className="mb-2"> Submit</Button>
-                                    </Col>
-                                </Form.Row>
-                            </Form>
-                        </Col>
-                    </Row>
-                    }
                     <Row className="mt-2">
                         <Col>
-                            <Table responsive bsPrefix="table" variant="dark" hover>
+                            <Table className="d-none" responsive bsPrefix="table" variant="dark" hover>
                                 <thead>
                                     <tr>
                                         <th>S.No</th>
@@ -109,6 +82,7 @@ class Productsummary extends Component {
                                         <th>RAM</th>
                                         <th>Storage</th>
                                         <th>display</th>
+                                        { this.state.userStatus && <th colSpan="2"></th> }
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -122,6 +96,13 @@ class Productsummary extends Component {
                                                 <td>{singleProduct.ram}</td>
                                                 <td>{singleProduct.storage}</td>
                                                 <td>{singleProduct.display}</td>
+                                                {
+                                                    this.state.userStatus && 
+                                                    <td colSpan="2">
+                                                        <Button variant="warning" onClick={() => this.handleSubmit(singleProduct.id, 'edit')}>Edit!</Button>
+                                                        <Button variant="danger" onClick={() => this.handleSubmit(singleProduct.id, 'delete')}>Remove</Button>
+                                                    </td>
+                                                }                                                
                                             </tr>
                                         })
                                     }

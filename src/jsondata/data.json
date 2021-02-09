@@ -114,20 +114,6 @@
       "submitted": true
     },
     {
-      "name": "Honor 7X 64GB",
-      "brand": "Honor",
-      "mrp": "14999",
-      "images": "https://www.91-img.com/pictures/123378-v2-honor-7x-64gb-mobile-phone-large-1.jpg",
-      "performance": "HiSilicon Kirin",
-      "display": "5.93\" (15.06 cm)",
-      "storage": "64 GB",
-      "camera": "16 MP + 2 MP",
-      "battery": "3440 mAh",
-      "ram": "5 GB",
-      "id": 1,
-      "submitted": true
-    },
-    {
       "name": "Realme 7 Pro",
       "brand": "Realme",
       "mrp": "19994",
@@ -143,16 +129,6 @@
   ],
   "productsmostviewed": [
     {
-      "id": 1,
-      "name": "Honor 7X 64GB",
-      "timeofview": 3
-    },
-    {
-      "id": 3,
-      "name": "Moto 8",
-      "timeofview": 5
-    },
-    {
       "id": 8,
       "name": "Realme 7 Pro",
       "timeofview": 2
@@ -160,6 +136,21 @@
     {
       "id": 2,
       "name": "Iphone SE",
+      "timeofview": 2
+    },
+    {
+      "id": 1,
+      "name": "Honor 7X 64GB",
+      "timeofview": 4
+    },
+    {
+      "id": 3,
+      "name": "Moto 8",
+      "timeofview": 6
+    },
+    {
+      "id": 4,
+      "name": "Poco 3",
       "timeofview": 2
     }
   ],

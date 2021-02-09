@@ -12,7 +12,7 @@ export default function NavBar() {
     return (
         <div className = "container-fluid p-0">
             <Navbar color="light" expand="lg"  className="bg-primary">
-                <NavbarBrand href="/" className="mx-lg-3 mx-0 d-block d-lg-block d-md-block">Shoppify</NavbarBrand>
+                <NavbarBrand href="/" className="mx-lg-3 mx-0 d-block d-lg-block d-md-block text-white">Shoppify</NavbarBrand>
                 { (userDetails.loginStatus) ? <SignOut /> :  <SignIn /> }
             </Navbar>
         </div>
