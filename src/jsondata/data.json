@@ -134,11 +134,6 @@
       "timeofview": 2
     },
     {
-      "id": 2,
-      "name": "Iphone SE",
-      "timeofview": 2
-    },
-    {
       "id": 1,
       "name": "Honor 7X 64GB",
       "timeofview": 4
@@ -152,6 +147,11 @@
       "id": 4,
       "name": "Poco 3",
       "timeofview": 2
+    },
+    {
+      "id": 2,
+      "name": "Iphone SE",
+      "timeofview": 3
     }
   ],
   "productsmostbuyed": []

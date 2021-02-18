@@ -59,7 +59,8 @@ class Productsummary extends Component {
             <Fragment>
                 <Container fluid>
                     {
-                        this.state.userStatus && <Row className="mt-2">
+                        this.state.userStatus && 
+                        <Row className="mt-2">
                         <Col>
                             <Alert variant="light">
                                 <div className="d-flex justify-content-between flex-column flex-md-row flex-lg-row">
@@ -72,7 +73,7 @@ class Productsummary extends Component {
                     }
                     <Row className="mt-2">
                         <Col>
-                            <Table className="d-none" responsive bsPrefix="table" variant="dark" hover>
+                            <Table className="d-block"  bsPrefix="table" variant="dark" hover>
                                 <thead>
                                     <tr>
                                         <th>S.No</th>

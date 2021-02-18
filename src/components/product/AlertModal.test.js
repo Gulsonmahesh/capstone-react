@@ -14,7 +14,7 @@ describe('Alert modal', () => {
 
     let wrapper;
     let props = {
-        message : 'test',
+        message : 'fail props message',
         loginStatus: false
     }
 
