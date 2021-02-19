@@ -9,6 +9,7 @@ import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button';
 import { API_BASE_ADDRESS } from '../../utilities/constants';
 import { Link }from 'react-router-dom'
+import Card from 'react-bootstrap/Card'
 
 class Productsummary extends Component {
     constructor(props) {
@@ -23,9 +24,9 @@ class Productsummary extends Component {
             this.setState({userStatus : userDetails.admin})
         }
         document.querySelector('html').style.overflow = 'auto';
-        fetch(`${API_BASE_ADDRESS}/productsmostviewed?_sort=id`).then(res => res.json()).then(result => console.log(result)).catch( error => {
-            console.log(error)
-        })
+        fetch(`${API_BASE_ADDRESS}/productsmostviewed?_sort=id`)
+        .then(res => res.json())
+        .catch( error => { console.log(error)})
     }
     componentWillUnmount() {
         document.querySelector('html').style.overflow = 'hidden';
@@ -54,6 +55,9 @@ class Productsummary extends Component {
             this.setState({[name] : value})
         }, 0);
     }
+    openProduct = (product) => {
+        this.props.history.push({pathname: `/product/${product.name}`});
+    }
     render() {
         return (
             <Fragment>
@@ -73,7 +77,7 @@ class Productsummary extends Component {
                     }
                     <Row className="mt-2">
                         <Col>
-                            <Table className="d-block"  bsPrefix="table" variant="dark" hover>
+                            <Table className="d-none d-md-block d-lg-block"  bsPrefix="table" hover>
                                 <thead>
                                     <tr>
                                         <th>S.No</th>
@@ -82,7 +86,6 @@ class Productsummary extends Component {
                                         <th>Price</th>
                                         <th>RAM</th>
                                         <th>Storage</th>
-                                        <th>display</th>
                                         { this.state.userStatus && <th colSpan="2"></th> }
                                     </tr>
                                 </thead>
@@ -96,12 +99,13 @@ class Productsummary extends Component {
                                                 <td>{singleProduct.mrp}</td>
                                                 <td>{singleProduct.ram}</td>
                                                 <td>{singleProduct.storage}</td>
-                                                <td>{singleProduct.display}</td>
                                                 {
                                                     this.state.userStatus && 
                                                     <td colSpan="2">
-                                                        <Button variant="warning" onClick={() => this.handleSubmit(singleProduct.id, 'edit')}>Edit!</Button>
-                                                        <Button variant="danger" onClick={() => this.handleSubmit(singleProduct.id, 'delete')}>Remove</Button>
+                                                        <div className="d-flex flex-row">
+                                                            <Button variant="warning" onClick={() => this.handleSubmit(singleProduct.id, 'edit')}><i className="fa fa-edit"></i></Button>
+                                                            <Button variant="danger" ><i className="fa fa-trash"></i></Button>
+                                                        </div>
                                                     </td>
                                                 }                                                
                                             </tr>
@@ -109,6 +113,29 @@ class Productsummary extends Component {
                                     }
                                 </tbody>
                             </Table>
+                            <div className="d-block d-md-none d-lg-none">
+                            {
+                                this.props.products && this.props.products.length!==0 && this.props.products.map((singleProduct) => {
+                                    return <div className="col-sm-12 col-md-4 col-lg-4 p-1" key ={singleProduct.name}>
+                                    <Card className="border-0 w-100 mb-2 mb-md-0 mb-lg-0">
+                                        <Card.Img variant='top' className="mt-1" src={singleProduct.images} alt={singleProduct.name} onClick={() => this.openProduct(singleProduct)} />
+                                        <Card.Body className="mb-1 mb-md-0 mb-lg-0 p-1 text-center">
+                                        <Link to={`/product/${singleProduct.name}`}>{singleProduct.name}</Link>                                            
+                                        </Card.Body>
+                                        {
+                                            this.state.userStatus &&
+                                            <Card.Footer className="d-flex justify-content-center border-0 bg-transparent">
+                                                <div className="d-flex flex-row">
+                                                    <Button variant="warning" className="mb-0" onClick={() => this.handleSubmit(singleProduct.id, 'edit')}><i className="fa fa-edit"></i></Button>
+                                                    <Button variant="danger" ><i className="fa fa-trash"></i></Button>
+                                                </div>
+                                            </Card.Footer>
+                                        }
+                                    </Card>
+                                    </div>
+                                })
+                            }
+                            </div>
                         </Col>
                     </Row>
                 </Container>

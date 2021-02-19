@@ -53,9 +53,9 @@ class Addproduct extends Component {
                     ? 'Product Updated'
                     : 'Product Added'
                 );
-                this.clearform();
-                this.props.initProducts()
-                
+                // this.clearform();
+                // this.props.initProducts()
+                this.props.history.push('/Summary');
             } else {
                 alert(
                     this.props.match.params.id  
