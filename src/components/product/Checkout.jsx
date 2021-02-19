@@ -24,8 +24,6 @@ class Checkout extends Component {
   }
 
   setpagevisibility = (displayType) => {
-    (document.querySelector("#cartlistitem")) && (document.querySelector("#cartlistitem").style.display = displayType);
-    document.querySelector('html').style.overflow = 'hidden';
     this.getProductPricetotal();
   }
 

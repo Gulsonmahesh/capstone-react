@@ -13,9 +13,6 @@ const Product = ({productData}) => {
     const openProduct = (product) => {
         history.push({pathname: `/product/${product.name}`});
     }
-    useEffect(() => {
-        document.querySelector('html').style.overflow = 'hidden !important';
-    },[])
     function addtoCart(selectedProduct) {
         if(checkDuplicate(selectedProduct.id)) {
             alert('Product already Exist in the cart')

@@ -12,7 +12,6 @@ class ProductDetails extends Component {
         productDetails: null};
     }
     componentDidMount() {
-        document.querySelector('html').style.overflow = 'auto';
         fetch(`${API_BASE_ADDRESS}/modals?name=${this.state.viewproduct}`).then(res => res.json()).then (
             result =>  {
                 this.setState({productDetails : result[0]});

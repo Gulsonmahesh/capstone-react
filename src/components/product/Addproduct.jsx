@@ -19,7 +19,6 @@ class Addproduct extends Component {
     }
 
     componentDidMount() {
-        document.querySelector('html').style.overflow = 'auto';
         if(this.props.match.params.id) {
             setTimeout(() => {
                 if (this.props.product !== null) {
