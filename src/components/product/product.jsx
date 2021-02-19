@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect }  from 'react';
+import React, { Fragment }  from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router";
 import { addtocart } from '../../store/actions/productAction';
